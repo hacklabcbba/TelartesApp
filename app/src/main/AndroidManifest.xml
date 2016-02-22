@@ -2,11 +2,9 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+   <!-- <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>-->
     <!-- The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended. -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application android:allowBackup="true" android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher" android:theme="@style/AppTheme">
@@ -26,10 +24,19 @@
         <activity android:name=".principal.PrincipalActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".principal.EventoActivity"
+        <activity android:name=".principal.NoticiaActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".principal.RutaEntregaActivity"
+        <activity android:name=".principal.NoticiaDetalleActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".principal.AgendaActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".principal.ConvocatoriaActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".principal.ConvocatoriaDetalleActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
     </application>

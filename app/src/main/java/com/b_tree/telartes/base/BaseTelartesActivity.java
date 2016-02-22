@@ -1,10 +1,12 @@
 package com.b_tree.telartes.base;
 
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 ;import com.b_tree.telartes.R;
@@ -15,7 +17,7 @@ import android.widget.TextView;
 public abstract class BaseTelartesActivity extends FragmentActivity{
     TextView lblTitulo;
     View btnAtras;
-
+    LinearLayout baner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public abstract class BaseTelartesActivity extends FragmentActivity{
         setContentView(getResLayout());
 
         lblTitulo = (TextView) findViewById(R.id.lbl_titulo);
+        baner = (LinearLayout)findViewById(R.id.baner);
         btnAtras = findViewById(R.id.btn_atras);
         if(btnAtras!=null){
         btnAtras.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +39,15 @@ public abstract class BaseTelartesActivity extends FragmentActivity{
         });
         }
         if(lblTitulo!=null) {
+
             lblTitulo.setText(getScreenLabel());
+            if(lblTitulo.getText().equals("AGENDA CULTURAL")){
+                baner.setBackgroundColor(getResources().getColor(R.color.verde));
+
+            }
+            if(lblTitulo.getText().equals("CONVOCATORIAS")) {
+                baner.setBackgroundColor(getResources().getColor(R.color.rojo));
+            }
         }
         inicializarVariables(savedInstanceState);
 

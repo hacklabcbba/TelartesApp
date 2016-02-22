@@ -1,22 +1,17 @@
 package com.b_tree.telartes.principal;
 
-import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 
 import android.support.v4.util.LongSparseArray;
 import android.util.SparseArray;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.b_tree.telartes.Entidades.Evento;
+import com.b_tree.telartes.Entidades.Noticia;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.b_tree.telartes.base.JSONParser;
@@ -51,14 +46,14 @@ public class RutaEntregaActivity extends BaseTelartesActivity implements MapFrag
 
 
     private GoogleMap googleMap;
-    private Evento pedidoSelected;
+    private Noticia pedidoSelected;
 
     public static String key_lista_punto = "key_punto";
 
-    private static HashMap<Marker, Evento> puntoMarker = new HashMap<Marker, Evento>();
+    private static HashMap<Marker, Noticia> puntoMarker = new HashMap<Marker, Noticia>();
     private static LongSparseArray<Marker> markersPuntos = new LongSparseArray<Marker>();
     private SparseArray<BitmapDescriptor> iconosCategorias = new SparseArray<BitmapDescriptor>();
-    private List<Evento> lstPuntos = new ArrayList<Evento>();
+    private List<Noticia> lstPuntos = new ArrayList<Noticia>();
     private int todos;
     private int cantEntregado;
     private int cantNoEntregado;
@@ -108,29 +103,29 @@ public class RutaEntregaActivity extends BaseTelartesActivity implements MapFrag
     public void actualizarMarcadores() {
         if (googleMap != null) {
             googleMap.clear();
-            for (Evento punto : lstPuntos) {
+            for (Noticia punto : lstPuntos) {
                 Marker m = aderirMarcador(punto);
                 if (m != null) {
                     puntoMarker.put(m, punto);
-                    markersPuntos.put(punto.getIdRes(), m);
+                    markersPuntos.put(punto.getNid(), m);
                 }
             }
         }
     }
 
-    public Marker aderirMarcador(Evento punto) {
-        if (punto.getLatitud() != null    && punto.getLongitud() != null) {
-            MarkerOptions markerOptions = new MarkerOptions()
-                    .position(
-                            new LatLng(punto.getLatitud(), punto.getLongitud()))
-                    .icon(loadBitmapDescriptor())
-                    .title(punto.getNombre())
-                    .snippet(punto.getFecha());
-            return googleMap.addMarker(markerOptions);
-        } else {
-            return null;
-        }
-
+    public Marker aderirMarcador(Noticia punto) {
+//        if (punto.getLatitud() != null    && punto.getImagen() != null) {
+//            MarkerOptions markerOptions = new MarkerOptions()
+//                    .position(
+//                            new LatLng(punto.getLatitud(), punto.getImagen()))
+//                    .icon(loadBitmapDescriptor())
+//                    .title(punto.getTitulo())
+//                    .snippet(punto.getCategoria());
+//            return googleMap.addMarker(markerOptions);
+//        } else {
+//            return null;
+//        }
+        return  null;
     }
 
     public void cargarMapa() {
@@ -202,7 +197,7 @@ public class RutaEntregaActivity extends BaseTelartesActivity implements MapFrag
                 googleMap.addPolyline(new PolylineOptions()
                         .add(new LatLng(src.latitude, src.longitude),
                                 new LatLng(dest.latitude, dest.longitude))
-                        .width(5).color(getResources().getColor(R.color.celeste))
+                        .width(5).color(getResources().getColor(R.color.rojo))
                         .geodesic(true));
             }
         } catch (JSONException e) {
@@ -291,7 +286,7 @@ public class RutaEntregaActivity extends BaseTelartesActivity implements MapFrag
         pedidoSelected = puntoMarker.get(arg0);
         if (pedidoSelected != null) {
             arg0.showInfoWindow();
-            SituarMapa(new LatLng(pedidoSelected.getLatitud(),pedidoSelected.getLongitud()), 15);
+          //  SituarMapa(new LatLng(pedidoSelected.getLatitud(),pedidoSelected.getImagen()), 15);
         }
 
        // CargarInfo(pedidoSelected);

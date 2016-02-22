@@ -2,15 +2,18 @@
 <resources>
     <color name="negro">#000000</color>
     <color name="blanco">#FFFFFF</color>
-    <color name="rojo">#9c0211</color>
+    <color name="rojo">#f1303e</color>
     <color name="fondo_header">#9c0211</color>
     <color name="text_header">#FFFFFF</color>
-    <color name="plomo">#B0B0B0</color>
+    <color name="plomo">#a7a9ac</color>
+
+    <color name="lila">#712077</color>
+    <color name="verde">#00a885</color>
+    <color name="naranja">#EB8910</color>
+
+
+
     <color name="plomo_obscuro">#121212</color>
     <color name="plomo_normal">#3f3f3f</color>
     <color name="gris">#6c6c6c</color>
-    <color name="fuccia">#DC0C78</color>
-    <color name="celeste">#01A1F7</color>
-    <color name="naranja">#EB8910</color>
-    
 </resources>

@@ -16,11 +16,9 @@ public class PrincipalActivity extends BaseTelartesActivity implements OnClickLi
 	private Button btnContenido;
 	private Button btnPruebas;
 	private Button btnEstadisticas;
-	private Button btnOpciones;
 
 	@Override
 	protected void inicializarVariables(Bundle savedInstanceState) {
-
 	}
 
 	@Override
@@ -32,13 +30,10 @@ public class PrincipalActivity extends BaseTelartesActivity implements OnClickLi
 	protected void instaciarAsignarIGU(Bundle savedInstanceState) {
 		btnContenido = (Button) findViewById(R.id.btn_contenido);
 		btnPruebas = (Button) findViewById(R.id.btn_pruebas);
-		btnEstadisticas = (Button) findViewById(R.id.btn_estadisticas);
-		btnOpciones = (Button) findViewById(R.id.btn_opciones);
-
+		btnEstadisticas = (Button) findViewById(R.id.btn_convocatoria);
 		btnContenido.setOnClickListener(this);
 		btnPruebas.setOnClickListener(this);
 		btnEstadisticas.setOnClickListener(this);
-		btnOpciones.setOnClickListener(this);
 	}
 
 
@@ -46,33 +41,38 @@ public class PrincipalActivity extends BaseTelartesActivity implements OnClickLi
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_contenido:
-			iniciarEventoActivity();
+			iniciarNoticiaActivity();
 			break;
 		case R.id.btn_pruebas:
-			iniciarEventoActivity();
+			iniciarAgendaActivity();
 			break;
-		case R.id.btn_estadisticas:
-			iniciarEventoActivity();
+		case R.id.btn_convocatoria:
+			iniciarConcovatoriasActivity();
 			break;
-		case R.id.btn_opciones:
-			iniciarEventoActivity();
-			break;
-
 		default:
 			break;
 		}
 	}
 
-	private void iniciarEventoActivity() {
-		startActivity(new Intent(this, EventoActivity.class));
+	private void iniciarNoticiaActivity() {
+		startActivity(new Intent(this, NoticiaActivity.class));
+	}
+	private void iniciarAgendaActivity() {
+		startActivity(new Intent(this, AgendaActivity.class));
 	}
 
-
+	private void iniciarConcovatoriasActivity() {
+		startActivity(new Intent(this, ConvocatoriaActivity.class));
+	}
 	@Override
 	protected String getScreenLabel() {
 		return "Principal";
 	}
 
 
+	@Override
+	protected void onResume() {
+		super.onResume();
 
+	}
 }

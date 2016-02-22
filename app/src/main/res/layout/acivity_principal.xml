@@ -4,27 +4,52 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/fondo_header"
-        android:gravity="center" >
+        android:layout_height="50dp"
+        android:background="@color/blanco"
+        android:weightSum="1" >
 
 
-        <TextView
-            android:id="@+id/textView1"
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Categorías"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/text_header" />
+            android:layout_height="match_parent"
+            android:id="@+id/imageView2"
+            android:src="@mipmap/header"
+            android:layout_gravity="left"
+            android:layout_weight="0.50"
+            android:layout_marginBottom="3dp"/>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:gravity="right">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_setting"
+                android:id="@+id/imageView4"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView3"
+                android:src="@mipmap/ic_information"
+
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                 />
+        </LinearLayout>
 
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/plomo_obscuro" />
+        android:layout_height="3dp"
+        android:background="@color/plomo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +67,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:background="@color/lila">
 
             <ImageButton
                 android:layout_width="0dp"
@@ -51,30 +77,32 @@
                 android:background="@android:color/transparent"
                 android:padding="25dp"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/noticia" />
+                android:src="@mipmap/ic_paper_blanco" />
 
             <Button
                 android:id="@+id/btn_contenido"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Noticias"
+                android:text="NOTICIAS"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="30dp"
+                android:textColor="@color/blanco"
                 android:background="@drawable/btn_selector"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gris" />
+            android:layout_height="2dp"
+            android:background="@color/blanco" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:background="@color/verde">
 
             <ImageButton
                 android:layout_width="0dp"
@@ -83,15 +111,16 @@
                 android:background="@android:color/transparent"
                 android:padding="25dp"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/convocatoria" />
+                android:src="@mipmap/calendar_blanco" />
 
             <Button
                 android:id="@+id/btn_pruebas"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Convocatorias"
+                android:text="AGENDA CULTURAL"
                 android:paddingLeft="30dp"
+                android:textColor="@color/blanco"
                 android:gravity="left|center_vertical"
                 android:background="@drawable/btn_selector"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -99,14 +128,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gris" />
+            android:layout_height="2dp"
+            android:background="@color/blanco" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:background="@color/rojo">
 
             <ImageButton
                 android:layout_width="0dp"
@@ -115,51 +145,22 @@
                 android:background="@android:color/transparent"
                 android:padding="25dp"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/mediateca" />
+                android:src="@mipmap/bullhorn_blanco" />
 
             <Button
-                android:id="@+id/btn_estadisticas"
+                android:id="@+id/btn_convocatoria"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Mediateca"
+                android:text="CONVOCATORIA"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="30dp"
+                android:textColor="@color/blanco"
                 android:background="@drawable/btn_selector"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gris" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal" >
-
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:background="@android:color/transparent"
-                android:padding="25dp"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/editorial" />
-
-            <Button
-                android:id="@+id/btn_opciones"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Editorial"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="30dp"
-                android:background="@drawable/btn_selector"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

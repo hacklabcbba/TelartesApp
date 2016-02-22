@@ -23,22 +23,23 @@
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
-
+        <TextView
+                  android:id="@+id/lbl_fecha"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Small Text"
+                  android:textAppearance="?android:attr/textAppearanceSmall" />
         <TextView
             android:id="@+id/lbl_descripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Medium Text"
+            android:maxLines="3"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/lbl_fecha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
         <ImageView
+            android:id="@+id/img_noticia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
