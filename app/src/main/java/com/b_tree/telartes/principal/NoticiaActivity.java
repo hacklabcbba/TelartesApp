@@ -54,7 +54,7 @@ public class NoticiaActivity extends BaseTelartesActivity {
 
 //        noticias = new NoticiasService(this) {
 //            @Override
-//            public void onSuccessObtenerNoticias(List<Noticia> noticias) {
+//            public void onSuccessObtenerConvocatoria(List<Noticia> noticias) {
 //                noticiasList = new ArrayList<>();
 //                noticiasList = noticias;
 //                noticiaAdapter = new AgendaAdapter(getBaseContext(), noticias);

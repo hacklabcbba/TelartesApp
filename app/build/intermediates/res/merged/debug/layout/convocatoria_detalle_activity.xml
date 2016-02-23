@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+
+        layout="@layout/view_header_share"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight = "1"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Noticia de ultimo momento"
+                android:id="@+id/lbl_titulo_convocatoria"
+                android:maxLines="2"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/img_convocatoria"
+                android:layout_weight="1"
+                android:src="@mipmap/none"/>
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Fecha límite:"
+                    android:id="@+id/textView3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"
+                    android:id="@+id/lbl_fecha" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Convocante:"
+                    android:id="@+id/textView4" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"
+                    android:id="@+id/lbl_convocante" />
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/lbl_descripcion"
+                android:layout_weight="3"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout><!-- From: file:/home/noemi/martadero/telartes/app/src/main/res/layout/convocatoria_detalle_activity.xml -->
