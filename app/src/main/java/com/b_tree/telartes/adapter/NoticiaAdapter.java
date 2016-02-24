@@ -14,9 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by Diana on 27/09/2015.
- */
+
 public class NoticiaAdapter extends ArrayAdapter<Noticia> {
 
     public NoticiaAdapter(Context context, List<Noticia> objects) {
@@ -28,6 +26,7 @@ public class NoticiaAdapter extends ArrayAdapter<Noticia> {
         TextView lblDescripcion;
         TextView lblFecha;
         ImageView img_noticias;
+
     }
 
     @Override
@@ -48,8 +47,9 @@ public class NoticiaAdapter extends ArrayAdapter<Noticia> {
         Noticia item = getItem(position);
         holder.lblNombre.setText(item.getTitulo());
         holder.lblDescripcion.setText(item.getDescripcion());
-        holder.lblFecha.setText(item.getFecha());
-        Picasso.with(getContext()).load(item.getImagen()).resize(200,250).into(holder.img_noticias);
+        holder.lblFecha.setText("Subido por "+item.getEnviadopor()+" el "+item.getFecha());
+        Picasso.with(getContext()).load(item.getImagen()).resize(200, 250).into(holder.img_noticias);
+
         return convertView;
     }
 

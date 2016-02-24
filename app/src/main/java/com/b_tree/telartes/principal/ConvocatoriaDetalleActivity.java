@@ -2,6 +2,7 @@ package com.b_tree.telartes.principal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ public class ConvocatoriaDetalleActivity  extends BaseTelartesActivity {
     private TextView lblTitulo;
     private  TextView lbl_fecha;
     private TextView lbl_fuente;
-    private TextView lbl_descripcion;
+    private WebView lbl_descripcion;
     private ImageView imgConvocatoria;
     private Convocatoria convocatoria;
     @Override
@@ -30,7 +31,7 @@ public class ConvocatoriaDetalleActivity  extends BaseTelartesActivity {
         lblTitulo = (TextView)findViewById(R.id.lbl_titulo_convocatoria);
         lbl_fecha = (TextView)findViewById(R.id.lbl_fecha);
         lbl_fuente = (TextView)findViewById(R.id.lbl_convocante);
-        lbl_descripcion = (TextView)findViewById(R.id.lbl_descripcion);
+        lbl_descripcion = (WebView)findViewById(R.id.lbl_descripcion);
         imgConvocatoria = (ImageView)findViewById(R.id.img_convocatoria);
         Intent i = getIntent();
         this.convocatoria = (Convocatoria)i.getSerializableExtra("convocatoria");
@@ -43,11 +44,12 @@ public class ConvocatoriaDetalleActivity  extends BaseTelartesActivity {
 
     @Override
     protected void instaciarAsignarIGU(Bundle savedInstanceState) {
+        String htmlText = "<html><body style=\"text-align:justify\"> %s </body></Html>";
         if(convocatoria!=null){
             lblTitulo.setText(convocatoria.getTitulo());
             lbl_fecha.setText(convocatoria.getFecha_limite());
             lbl_fuente.setText(convocatoria.getConvocante());
-            lbl_descripcion.setText(convocatoria.getDescripcion());
+            lbl_descripcion.loadData(String.format(htmlText, convocatoria.getDescripcion()), "text/html", "utf-8");
             Picasso.with(getBaseContext()).load(convocatoria.getImagen()).into(imgConvocatoria);
         }
 

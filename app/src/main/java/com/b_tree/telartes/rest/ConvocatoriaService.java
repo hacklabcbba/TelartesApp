@@ -32,7 +32,7 @@ public  abstract  class ConvocatoriaService  extends ClasesRest {
     @Override
     protected String getMetod() {
         // TODO Auto-generated method stub
-        return "noticiasrest";
+        return "convocatoriasrest";
     }
 
 

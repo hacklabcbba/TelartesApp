@@ -5,38 +5,36 @@ import android.util.Log;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.net.URI;
 
-/**
- * Created by Diana on 27/09/2015.
- */
+
 public class Noticia implements Serializable {
+    int nid;
     String titulo;
     String descripcion;
     String categoria;
     String fuente;
     String imagen;
     String fecha;
-    int nid;
+    String enviadopor;
+    String autorEnlace;
+    String autorNombre;
 
-    public int getNid() {
-        return nid;
-    }
-
-    public void setNid(int nid) {
-        this.nid = nid;
-    }
     public Noticia(){
 
     }
 
-    public Noticia(String nombre, String descripcion, String categoria, String fuente, String imagen, String fecha, int nid) {
-        this.titulo = nombre;
+    public Noticia(int nid, String titulo, String descripcion, String categoria, String fuente, String imagen, String fecha, String enviadopor, String autorEnlace, String autorNombre) {
+        this.nid = nid;
+        this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.fuente = fuente;
         this.imagen = imagen;
         this.fecha = fecha;
-        this.nid = nid;
+        this.enviadopor = enviadopor;
+        this.autorEnlace = autorEnlace;
+        this.autorNombre = autorNombre;
     }
 
     public Noticia(JSONObject jsonObject){
@@ -54,6 +52,12 @@ public class Noticia implements Serializable {
             this.imagen=src;
             this.fecha = jsonObject.getString("fecha de mensaje");
             this.nid = Integer.parseInt(jsonObject.getString("nid"));
+            this.enviadopor=jsonObject.getString("enviado por");
+            URI uri = new URI(jsonObject.getString("enlace del autor"));
+            String domain = uri.getHost();
+            this.autorEnlace= "http://"+domain;
+            this.autorNombre = jsonObject.getString("nombre del autor");
+            Log.d("ERROR FUENTE ",fuente);
         }catch (Exception e){
             Log.d("Error json", e.getMessage());
         }
@@ -106,5 +110,37 @@ public class Noticia implements Serializable {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public int getNid() {
+        return nid;
+    }
+
+    public void setNid(int nid) {
+        this.nid = nid;
+    }
+
+    public String getEnviadopor() {
+        return enviadopor;
+    }
+
+    public void setEnviadopor(String enviadopor) {
+        this.enviadopor = enviadopor;
+    }
+
+    public String getAutorEnlace() {
+        return autorEnlace;
+    }
+
+    public void setAutorEnlace(String autorEnlace) {
+        this.autorEnlace = autorEnlace;
+    }
+
+    public String getAutorNombre() {
+        return autorNombre;
+    }
+
+    public void setAutorNombre(String autorNombre) {
+        this.autorNombre = autorNombre;
     }
 }

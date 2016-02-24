@@ -26,6 +26,7 @@ public class AgendaAdapter  extends ArrayAdapter<AgendaCultural> {
         TextView txtDescripcion;
         TextView txtFecha;
         ImageView imgAgenda;
+        TextView txtLugar;
     }
 
     @Override
@@ -35,8 +36,9 @@ public class AgendaAdapter  extends ArrayAdapter<AgendaCultural> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.agenda_item, null);
             holder.txttitulo = (TextView) convertView.findViewById(R.id.txt_a_titulo);
             holder.txtFecha = (TextView) convertView.findViewById(R.id.txt_a_fecha);
-            holder.txtDescripcion = (TextView) convertView.findViewById(R.id.txt_c_descripcion);
+            holder.txtDescripcion = (TextView) convertView.findViewById(R.id.txt_a_descripcion);
             holder.imgAgenda = (ImageView)convertView.findViewById(R.id.img_a_agenda);
+            holder.txtLugar = (TextView)convertView.findViewById(R.id.txt_a_lugar);
             convertView.setTag(holder);
 
         } else {
@@ -45,9 +47,10 @@ public class AgendaAdapter  extends ArrayAdapter<AgendaCultural> {
 
         AgendaCultural item = getItem(position);
         holder.txttitulo.setText(item.getTitulo());
-        holder.txtFecha.setText(item.getFecha());
+        holder.txtFecha.setText("De "+item.getFechaInicio() + " hasta " +item.getFechaFin() );
         holder.txtDescripcion.setText(item.getDescripcion());
         Picasso.with(getContext()).load(item.getImagen()).resize(200,250).into(holder.imgAgenda);
+        holder.txtLugar.setText(item.getDepartamento());
         return convertView;
     }
 }

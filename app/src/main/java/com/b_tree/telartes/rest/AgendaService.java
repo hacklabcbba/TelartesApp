@@ -32,7 +32,7 @@ public abstract class AgendaService  extends ClasesRest {
     @Override
     protected String getMetod() {
         // TODO Auto-generated method stub
-        return "noticiasrest";
+        return "agendaculturalrest";
     }
 
 
@@ -55,7 +55,7 @@ public abstract class AgendaService  extends ClasesRest {
             for (int c = 0; c <jsonArray.length() ; c++) {
                 listaAgenda.add(new AgendaCultural(jsonArray.getJSONObject(c)));
             }
-            onSuccessObtenerNoticias(listaAgenda);
+            onSuccessObtenerAgenda(listaAgenda);
 
         } catch (Exception e) {
             Log.d("no consume agenda", e.getMessage());
@@ -69,6 +69,6 @@ public abstract class AgendaService  extends ClasesRest {
 
     }
 
-    public abstract void onSuccessObtenerNoticias(List<AgendaCultural> agendalist);
+    public abstract void onSuccessObtenerAgenda(List<AgendaCultural> agendalist);
 }
 

@@ -69,6 +69,10 @@
             android:name="com.b_tree.telartes.principal.ConvocatoriaDetalleActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.b_tree.telartes.principal.AgendaDetalleActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

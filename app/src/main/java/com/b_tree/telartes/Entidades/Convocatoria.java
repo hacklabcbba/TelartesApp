@@ -32,6 +32,7 @@ public class Convocatoria implements Serializable {
             this.titulo = android.text.Html.fromHtml(jsonObject.getString("node_title")).toString();
             this.categoria = android.text.Html.fromHtml(jsonObject.getString("categoría")).toString();
             this.correo = jsonObject.getString("correo electrónico");
+            this.descripcion = android.text.Html.fromHtml(jsonObject.getString("descripcion")).toString();
             this.direccion_web = android.text.Html.fromHtml(jsonObject.getString("dirección web")).toString();
             this.archivo =  jsonObject.getString("archivo pdf");
             this.imagen = (jsonObject.getString("imagen"));

@@ -39,6 +39,9 @@
         <activity android:name=".principal.ConvocatoriaDetalleActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".principal.AgendaDetalleActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

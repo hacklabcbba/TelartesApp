@@ -33,6 +33,7 @@ public abstract class NoticiasService extends ClasesRest {
 	}
 
 
+
 	@Override
 	public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
                 Log.d("ERROR" ,  bytes.toString());
