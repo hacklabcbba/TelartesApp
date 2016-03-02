@@ -1,6 +1,5 @@
 package com.b_tree.telartes.principal;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,16 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.b_tree.telartes.Entidades.Noticia;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.adapter.NoticiaAdapter;
 import com.b_tree.telartes.base.BaseTelartesActivity;
-import com.b_tree.telartes.base.Utils;
 import com.b_tree.telartes.rest.NoticiasService;
-import com.google.android.gms.maps.GoogleMap;
 
 import org.apache.http.Header;
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;

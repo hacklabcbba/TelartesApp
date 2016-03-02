@@ -6,11 +6,8 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.b_tree.telartes.Entidades.Noticia;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
-import com.b_tree.telartes.noghteh.JustifiedTextView;
-import com.b_tree.telartes.utils.TextViewEx;
 import com.squareup.picasso.Picasso;
 
 

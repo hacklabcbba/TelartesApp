@@ -6,7 +6,6 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.b_tree.telartes.Entidades.Convocatoria;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.squareup.picasso.Picasso;

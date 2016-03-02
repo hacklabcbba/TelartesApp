@@ -6,16 +6,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.b_tree.telartes.Entidades.AgendaCultural;
-import com.b_tree.telartes.Entidades.Convocatoria;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.adapter.ConvocatoriaAdapter;
-import com.b_tree.telartes.adapter.NoticiaAdapter;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.b_tree.telartes.rest.ConvocatoriaService;
-import com.b_tree.telartes.rest.NoticiasService;
-
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;

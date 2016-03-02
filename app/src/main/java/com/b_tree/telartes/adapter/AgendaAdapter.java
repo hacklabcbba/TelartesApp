@@ -7,8 +7,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.b_tree.telartes.Entidades.AgendaCultural;
-import com.b_tree.telartes.Entidades.Convocatoria;
 import com.b_tree.telartes.R;
 import com.squareup.picasso.Picasso;
 import java.util.List;

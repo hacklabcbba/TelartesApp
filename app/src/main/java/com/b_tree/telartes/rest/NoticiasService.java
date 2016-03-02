@@ -6,8 +6,6 @@ import java.util.List;
 import org.apache.http.Header;
 import org.json.JSONArray;
 
-import com.b_tree.telartes.Entidades.Noticia;
-
 
 import android.content.Context;
 import android.util.Log;

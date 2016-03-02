@@ -11,7 +11,6 @@ import android.util.SparseArray;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.b_tree.telartes.Entidades.Noticia;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.b_tree.telartes.base.JSONParser;
@@ -25,7 +24,6 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 

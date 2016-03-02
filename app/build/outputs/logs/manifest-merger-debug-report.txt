@@ -163,6 +163,7 @@ MERGED from [com.android.support:support-v4:23.0.1] /home/noemi/martadero/telart
 MERGED from [com.google.android.gms:play-services-wearable:8.1.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.1.0/AndroidManifest.xml:19:5-20
 MERGED from [com.google.android.gms:play-services-basement:8.1.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:23.0.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:22:5-20
+MERGED from [com.github.bluejamesbond:textjustify-android:2.1.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.github.bluejamesbond/textjustify-android/2.1.1/AndroidManifest.xml:40:5-20
 	android:label
 		ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:9:45-77
 	android:allowBackup
@@ -389,6 +390,7 @@ MERGED from [com.google.android.gms:play-services-wearable:8.1.0] /home/noemi/ma
 MERGED from [com.google.android.gms:play-services-base:8.1.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.1.0/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-basement:8.1.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:23.0.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:20:5-43
+MERGED from [com.github.bluejamesbond:textjustify-android:2.1.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.github.bluejamesbond/textjustify-android/2.1.1/AndroidManifest.xml:36:5-38:41
 	android:targetSdkVersion
 		INJECTED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml
 		INJECTED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml
