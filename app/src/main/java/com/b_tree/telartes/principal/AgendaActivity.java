@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.b_tree.telartes.Entidades.AgendaCultural;
+import com.b_tree.telartes.Global;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.adapter.AgendaAdapter;
 import com.b_tree.telartes.base.BaseTelartesActivity;
@@ -27,7 +29,6 @@ public class AgendaActivity extends BaseTelartesActivity {
     private AgendaService agendas;
     private List<AgendaCultural> agendaList;
 
-
     @Override
     protected String getScreenLabel() {
         return "AGENDA CULTURAL";
@@ -36,36 +37,53 @@ public class AgendaActivity extends BaseTelartesActivity {
     @Override
     protected void inicializarVariables(Bundle savedInstanceState) {
         agendaList = new ArrayList<>();
-        agendas = new AgendaService(this) {
-            @Override
-            public void onSuccessObtenerAgenda(List<AgendaCultural> agendalist) {
-                agendaList = agendalist;
-                agendaAdapter = new AgendaAdapter(getBaseContext(), agendaList);
-            }
+        lvAgenda = (ListView) findViewById(R.id.lv_agenda);
+        agendaList = Global.getMiglobal().getDaosession().getAgendaCulturalDao().loadAll();
+        if(agendaList.isEmpty()){
+            agendas = new AgendaService(this) {
+                @Override
+                public void onSuccessObtenerAgenda(List<AgendaCultural> agendalist) {
+                    agendaList = agendalist;
+                    Global.getMiglobal().getDaosession().getAgendaCulturalDao().insertInTx(agendalist);
+                    agendaAdapter = new AgendaAdapter(getBaseContext(), agendaList);
+                }
 
-            @Override
-            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                super.onFailure(i, headers, bytes, throwable);
-                Log.d("ERROR ", throwable.getMessage());
-            }
+                @Override
+                public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                    super.onFailure(i, headers, bytes, throwable);
+                    Log.d("ERROR ", throwable.getMessage());
+                }
 
-            @Override
-            public void onFinish() {
-                super.onFinish();
+                @Override
+                public void onFinish() {
+                    super.onFinish();
 
-                lvAgenda = (ListView) findViewById(R.id.lv_agenda);
-                lvAgenda.setAdapter(agendaAdapter);
-                lvAgenda.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent i = new Intent(AgendaActivity.this, AgendaDetalleActivity.class);
-                        i.putExtra("agenda", agendaList.get(position));
-                        startActivity(i);
-                    }
-                });
-            }
-        };
-        agendas.obtenerAgendaCultural();
+
+                    lvAgenda.setAdapter(agendaAdapter);
+                    lvAgenda.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent i = new Intent(AgendaActivity.this, AgendaDetalleActivity.class);
+                            i.putExtra("agenda", agendaList.get(position));
+                            startActivity(i);
+                        }
+                    });
+                }
+            };
+            agendas.obtenerAgendaCultural();
+        }else{
+            agendaAdapter = new AgendaAdapter(getBaseContext(), agendaList);
+            lvAgenda.setAdapter(agendaAdapter);
+            lvAgenda.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent i = new Intent(AgendaActivity.this, AgendaDetalleActivity.class);
+                    i.putExtra("agenda", agendaList.get(position));
+                    startActivity(i);
+                }
+            });
+        }
+
 
     }
 

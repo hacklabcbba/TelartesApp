@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.b_tree.telartes.Entidades.Noticia;
 import com.b_tree.telartes.R;
 import com.squareup.picasso.Picasso;
 
@@ -46,7 +47,7 @@ public class NoticiaAdapter extends ArrayAdapter<Noticia> {
         Noticia item = getItem(position);
         holder.lblNombre.setText(item.getTitulo());
         holder.lblDescripcion.setText(item.getDescripcion());
-        holder.lblFecha.setText("Subido por "+item.getEnviadopor()+" el "+item.getFecha());
+        holder.lblFecha.setText("Subido por "+item.getEnviado_por()+" el "+item.getFecha());
         Picasso.with(getContext()).load(item.getImagen()).resize(200, 250).into(holder.img_noticias);
 
         return convertView;

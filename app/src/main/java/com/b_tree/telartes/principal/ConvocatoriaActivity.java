@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.b_tree.telartes.Entidades.Convocatoria;
+import com.b_tree.telartes.Global;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.adapter.ConvocatoriaAdapter;
 import com.b_tree.telartes.base.BaseTelartesActivity;
@@ -32,31 +34,47 @@ public class ConvocatoriaActivity extends BaseTelartesActivity {
     @Override
     protected void inicializarVariables(Bundle savedInstanceState) {
         convocatoriaList = new ArrayList<>();
-        convocatoriaService = new ConvocatoriaService(this) {
-            @Override
-            public void onSuccessObtenerConvocatoria(List<Convocatoria> convocatorialist) {
-                convocatoriaList = new ArrayList<>();
-                convocatoriaList = convocatorialist;
-                convocatoriaAdapter = new ConvocatoriaAdapter(getBaseContext(), convocatoriaList);
-            }
+        lvConvocatoria = (ListView) findViewById(R.id.lv_convocatoria);
+        convocatoriaList = Global.getMiglobal().getDaosession().getConvocatoriaDao().loadAll();
+        if (convocatoriaList.isEmpty()){
 
-            @Override
-            public void onFinish() {
-                lvConvocatoria = (ListView) findViewById(R.id.lv_convocatoria);
-                lvConvocatoria.setAdapter(convocatoriaAdapter);
-                lvConvocatoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaDetalleActivity.class);
-                        i.putExtra("convocatoria", convocatoriaList.get(position));
-                        startActivity(i);
-                    }
-                });
+            convocatoriaService = new ConvocatoriaService(this) {
+                @Override
+                public void onSuccessObtenerConvocatoria(List<Convocatoria> convocatorialist) {
+                    convocatoriaList = convocatorialist;
+                    Global.getMiglobal().getDaosession().getConvocatoriaDao().insertInTx(convocatorialist);
+                    convocatoriaAdapter = new ConvocatoriaAdapter(getBaseContext(), convocatoriaList);
+                }
 
-            }
-        };
-        convocatoriaService.obtenerConvocatorias();
+                @Override
+                public void onFinish() {
 
+                    lvConvocatoria.setAdapter(convocatoriaAdapter);
+                    lvConvocatoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaDetalleActivity.class);
+                            i.putExtra("convocatoria", convocatoriaList.get(position));
+                            startActivity(i);
+                        }
+                    });
+
+                }
+            };
+            convocatoriaService.obtenerConvocatorias();
+
+        }else{
+            convocatoriaAdapter = new ConvocatoriaAdapter(getBaseContext(), convocatoriaList);
+            lvConvocatoria.setAdapter(convocatoriaAdapter);
+            lvConvocatoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaDetalleActivity.class);
+                    i.putExtra("convocatoria", convocatoriaList.get(position));
+                    startActivity(i);
+                }
+            });
+        }
 
     }
 

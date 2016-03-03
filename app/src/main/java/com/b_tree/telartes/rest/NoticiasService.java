@@ -10,6 +10,8 @@ import org.json.JSONArray;
 import android.content.Context;
 import android.util.Log;
 
+import com.b_tree.telartes.Entidades.Noticia;
+
 public abstract class NoticiasService extends ClasesRest {
 	private List<Noticia> listaNoticias;
 

@@ -6,6 +6,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.b_tree.telartes.Entidades.AgendaCultural;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.squareup.picasso.Picasso;
@@ -58,7 +59,7 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
               txtfecha.setText(agenda.getFecha());
               txtDescripcion.loadData(String.format(htmlText, agenda.getDescripcion()), "text/html", "utf-8");
                 txtDepartamento.setText("Departamento: "+agenda.getDepartamento());
-            txtFechaEvento.setText("Fecha: "+"De "+ agenda.getFechaInicio()+ " hasta "+agenda.getFechaFin());
+            txtFechaEvento.setText("Fecha: "+"De "+ agenda.getFechainicio()+ " hasta "+agenda.getFechafin());
             txtCosto.setText("Costo: Entrada libre");
             txtLugar.setText("Lugar/Direccion: "+agenda.getLugar_direccion());
 

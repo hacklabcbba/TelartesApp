@@ -26,6 +26,7 @@
          Google Maps Android API v2, but are recommended.
     -->
     <application
+        android:name="com.b_tree.telartes.Global"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -71,6 +72,10 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="com.b_tree.telartes.principal.AgendaDetalleActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.b_tree.telartes.principal.NoticiaCategoriaActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->

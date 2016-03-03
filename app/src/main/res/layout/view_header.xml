@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_setting"
-                android:id="@+id/imageView4"
+                android:id="@+id/menu_setting"
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="7dp"/>
 
@@ -85,7 +85,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView"
+            android:id="@+id/image_menu"
             android:src="@mipmap/ic_menu"/>
 
 

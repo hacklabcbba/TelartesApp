@@ -11,6 +11,7 @@ import android.util.SparseArray;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.b_tree.telartes.Entidades.Noticia;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.b_tree.telartes.base.JSONParser;
@@ -72,7 +73,7 @@ public class RutaEntregaActivity extends BaseTelartesActivity implements MapFrag
     @Override
     protected void inicializarVariables(Bundle savedInstanceState) {
         cargarMapa();
-        lstPuntos = Utils.cargarEventos();
+     //   lstPuntos = Utils.cargarEventos();
     }
 
     @Override

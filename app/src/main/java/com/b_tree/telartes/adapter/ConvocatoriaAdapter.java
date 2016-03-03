@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.b_tree.telartes.Entidades.Convocatoria;
 import com.b_tree.telartes.R;
 import com.squareup.picasso.Picasso;
 
@@ -45,7 +46,7 @@ public class ConvocatoriaAdapter  extends ArrayAdapter<Convocatoria> {
 
         Convocatoria item = getItem(position);
         holder.txtTitulo.setText(item.getTitulo());
-        holder.txtFecha.setText(item.getFecha_limite());
+        holder.txtFecha.setText(item.getFechalimite());
         holder.txtDescripcion.setText(item.getDescripcion());
         Picasso.with(getContext()).load(item.getImagen()).resize(200,250).into(holder.imgConvocatoria);
         return convertView;

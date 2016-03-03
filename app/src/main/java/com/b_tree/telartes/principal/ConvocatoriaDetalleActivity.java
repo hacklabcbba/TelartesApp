@@ -6,6 +6,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.b_tree.telartes.Entidades.Convocatoria;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.squareup.picasso.Picasso;
@@ -46,7 +47,7 @@ public class ConvocatoriaDetalleActivity  extends BaseTelartesActivity {
         String htmlText = "<html><body style=\"text-align:justify\"> %s </body></Html>";
         if(convocatoria!=null){
             lblTitulo.setText(convocatoria.getTitulo());
-            lbl_fecha.setText(convocatoria.getFecha_limite());
+            lbl_fecha.setText(convocatoria.getFechalimite());
             lbl_fuente.setText(convocatoria.getConvocante());
             lbl_descripcion.loadData(String.format(htmlText, convocatoria.getDescripcion()), "text/html", "utf-8");
             Picasso.with(getBaseContext()).load(convocatoria.getImagen()).into(imgConvocatoria);

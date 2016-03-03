@@ -3,6 +3,8 @@ package com.b_tree.telartes.rest;
 import android.content.Context;
 import android.util.Log;
 
+import com.b_tree.telartes.Entidades.AgendaCultural;
+
 import org.apache.http.Header;
 import org.json.JSONArray;
 
