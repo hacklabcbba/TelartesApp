@@ -41,11 +41,18 @@ public abstract class BaseTelartesActivity extends FragmentActivity{
         if(lblTitulo!=null) {
 
             lblTitulo.setText(getScreenLabel());
+            if(lblTitulo.getText().equals("NOTICIAS")){
+                btnAtras.setBackgroundColor(getResources().getColor(R.color.lila));
+               // baner.setBackgroundColor(getResources().getColor(R.color.verde));
+
+            }
             if(lblTitulo.getText().equals("AGENDA CULTURAL")){
+                btnAtras.setBackgroundColor(getResources().getColor(R.color.verde));
                 baner.setBackgroundColor(getResources().getColor(R.color.verde));
 
             }
             if(lblTitulo.getText().equals("CONVOCATORIAS")) {
+                btnAtras.setBackgroundColor(getResources().getColor(R.color.rojo));
                 baner.setBackgroundColor(getResources().getColor(R.color.rojo));
             }
         }

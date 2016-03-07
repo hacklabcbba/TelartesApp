@@ -9,8 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.b_tree.telartes.Entidades.DaoMaster;
 import com.b_tree.telartes.Entidades.DaoSession;
 
-import java.io.Console;
-
 
 
 public class Global extends Application {

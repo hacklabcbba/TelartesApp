@@ -47,6 +47,12 @@
         <activity android:name=".principal.NoticiaCategoriaActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".principal.AgendaCategoriaActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".principal.ConvocatoriaCategoriaActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

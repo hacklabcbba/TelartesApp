@@ -80,6 +80,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/img_noticia"
             android:layout_weight="1"
+            android:scaleType="fitXY"
             android:src="@mipmap/none"/>
         <WebView
             android:id="@+id/lbl_descripcion"

@@ -7,16 +7,15 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-
-        android:weightSum="3">
-
+        android:weightSum="1">
 
         <LinearLayout
-            android:layout_width="254dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.7">
 
         <TextView
             android:id="@+id/lbl_titulo"
@@ -37,14 +36,16 @@
             android:layout_height="wrap_content"
             android:text="Medium Text"
             android:maxLines="3"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </LinearLayout>
         <ImageView
             android:id="@+id/img_noticia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_weight="0.3"
+            android:layout_height="130dp"
+            android:scaleType="fitXY"
             android:layout_margin="5dp"
-            android:src="@mipmap/ruta"/>
+            android:src="@mipmap/prueba"/>
     </LinearLayout>
 </LinearLayout>

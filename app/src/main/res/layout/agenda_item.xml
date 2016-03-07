@@ -47,8 +47,9 @@
         </LinearLayout>
         <ImageView
             android:id="@+id/img_a_agenda"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:scaleType="fitXY"
             android:layout_margin="5dp"
             android:src="@mipmap/ruta"/>
     </LinearLayout>

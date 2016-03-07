@@ -41,7 +41,7 @@ public class NoticiaActivity extends BaseTelartesActivity {
     public List<Noticia> noticiasList;
     private ImageView menu_filter;
     private ImageView menuSetting;
-    Point p;
+    private Point p;
     @Override
     protected String getScreenLabel() {
         return "NOTICIAS";
@@ -118,8 +118,6 @@ public class NoticiaActivity extends BaseTelartesActivity {
 
 
     }
-
-
 
     @Override
     protected void instaciarAsignarIGU(Bundle savedInstanceState) {

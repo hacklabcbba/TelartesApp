@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/blanco"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <include
+        layout="@layout/view_header_filter"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/rojo"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="CONVOCATORIAS"
+            android:textColor="@color/blanco"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/textView11"
+            android:paddingLeft="10dp"
+            android:layout_margin="3dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Seleccionar:"
+        android:id="@+id/textView10"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blanco">
+
+        <com.b_tree.telartes.CircleCheckBox
+            android:id="@+id/chbx"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:paddingLeft="5dp"
+            app:borderThickness="2dp"
+            app:circleBorderColor="@color/rojo"
+            app:innerCircleColor="@color/rojo"
+            app:innerCircleRadius="14dp"
+            app:outerCircleColor="@color/blanco"
+            app:outerCircleRadius="6dp"
+            app:showOuterCircle="true"
+            app:textColor="@color/rojo"
+            app:textLeftPadding="5dp"
+            app:textSize="16dp"
+            app:tickColor="#ffffff"
+            app:tickThickness="1dp"
+            app:text="Todas" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/plomo">
+    </LinearLayout>
+
+    <ListView
+        android:background="@color/blanco"
+        android:layout_width="match_parent"
+        android:layout_height="362dp"
+        android:id="@+id/list_filter"
+        android:layout_weight="1.26" />
+
+    <LinearLayout
+        android:id="@+id/ver_convocatoria"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@color/plomo"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="VER CONVOCATORIAS"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginRight="30dp"
+            android:textColor="@color/rojo"
+            android:id="@+id/textView12"
+            android:layout_weight="0.27" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/imageView7"
+            android:src="@mipmap/ic_siguiente_rojo"/>
+    </LinearLayout>
+</LinearLayout><!-- From: file:/home/noemi/martadero/telartes/app/src/main/res/layout/convocatoria_categoria_activity.xml -->

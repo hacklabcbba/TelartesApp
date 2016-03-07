@@ -48,7 +48,7 @@ public class ConvocatoriaAdapter  extends ArrayAdapter<Convocatoria> {
         holder.txtTitulo.setText(item.getTitulo());
         holder.txtFecha.setText(item.getFechalimite());
         holder.txtDescripcion.setText(item.getDescripcion());
-        Picasso.with(getContext()).load(item.getImagen()).resize(200,250).into(holder.imgConvocatoria);
+        Picasso.with(getContext()).load(item.getImagen()).into(holder.imgConvocatoria);
         return convertView;
     }
 

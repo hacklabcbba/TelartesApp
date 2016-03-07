@@ -1,0 +1,102 @@
+-injars /home/noemi/martadero/telartes/app/build/intermediates/multi-dex/debug/allclasses.jar
+-outjars /home/noemi/martadero/telartes/app/build/intermediates/multi-dex/debug/componentClasses.jar
+
+-libraryjars /home/noemi/Android/Sdk/build-tools/23.0.0/lib/shrinkedAndroid.jar
+
+-forceprocessing
+-dontoptimize
+-dontobfuscate
+-dontpreverify
+-dontwarn
+-printconfiguration /home/noemi/martadero/telartes/app/build/intermediates/multi-dex/debug/components.flags
+
+
+-keep class com.b_tree.telartes.Global {
+    <init>();
+    void attachBaseContext(android.content.Context);
+}
+
+-keep class com.b_tree.telartes.base.SplashActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.PrincipalActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.NoticiaActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.NoticiaDetalleActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.AgendaActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.ConvocatoriaActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.ConvocatoriaDetalleActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.AgendaDetalleActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.NoticiaCategoriaActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.AgendaCategoriaActivity {
+    <init>();
+}
+
+-keep class com.b_tree.telartes.principal.ConvocatoriaCategoriaActivity {
+    <init>();
+}
+
+-keep class com.google.android.gms.ads.AdActivity {
+    <init>();
+}
+
+-keep class com.google.android.gms.ads.purchase.InAppPurchaseActivity {
+    <init>();
+}
+
+-keep class com.google.android.gms.appinvite.PreviewActivity {
+    <init>();
+}
+
+-keep class com.google.android.gms.auth.api.signin.internal.SignInHubActivity {
+    <init>();
+}
+
+-keep class com.google.android.gms.auth.api.signin.RevocationBoundService {
+    <init>();
+}
+
+-keep class com.google.android.gms.measurement.AppMeasurementContentProvider {
+    <init>();
+}
+
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver {
+    <init>();
+}
+
+-keep class com.google.android.gms.measurement.AppMeasurementService {
+    <init>();
+}
+
+-keep public class * extends android.app.backup.BackupAgent {
+    <init>();
+}
+
+-keep public class * extends java.lang.annotation.Annotation {
+    <fields>;
+    <methods>;
+}

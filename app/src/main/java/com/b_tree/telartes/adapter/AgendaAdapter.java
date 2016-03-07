@@ -48,7 +48,7 @@ public class AgendaAdapter  extends ArrayAdapter<AgendaCultural> {
         holder.txttitulo.setText(item.getTitulo());
         holder.txtFecha.setText("De "+item.getFechainicio() + " hasta " +item.getFechafin() );
         holder.txtDescripcion.setText(item.getDescripcion());
-        Picasso.with(getContext()).load(item.getImagen()).resize(200,250).into(holder.imgAgenda);
+        Picasso.with(getContext()).load(item.getImagen()).into(holder.imgAgenda);
         holder.txtLugar.setText(item.getDepartamento());
         return convertView;
     }

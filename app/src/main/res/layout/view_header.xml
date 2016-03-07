@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/convocatoria_activity">
 
 
     <LinearLayout
@@ -14,17 +16,16 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-
-            android:src="@mipmap/header"
+            android:src="@mipmap/icon_banner"
             android:layout_gravity="left"
-            android:layout_weight="0.50"
-            android:layout_marginBottom="3dp"/>
+            android:layout_weight="0.20"
+            android:padding="3dp"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.50"
+            android:layout_weight="0.80"
             android:gravity="right">
             <ImageView
                 android:layout_width="wrap_content"

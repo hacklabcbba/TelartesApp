@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/img_da_agenda"
                 android:layout_weight="1"
+                android:scaleType="fitXY"
                 android:src="@mipmap/none"/>
             <TextView
                 android:layout_width="wrap_content"
