@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="Medium Text"
                 android:maxLines="3"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </LinearLayout>
         <ImageView

@@ -198,6 +198,7 @@ com/google/ads/AdSize.class
 com/google/android/gms/location/places/PlaceFilter$zza.class
 com/google/android/gms/internal/zzcm.class
 org/apache/http/impl/client/RequestWrapper.class
+com/bluejamesbond/text/DocumentView.class
 android/support/v4/media/MediaDescriptionCompat.class
 android/support/v4/media/session/PlaybackStateCompat$State.class
 org/apache/http/client/utils/URLEncodedUtils.class
@@ -652,8 +653,8 @@ android/support/annotation/RequiresPermission.class
 com/google/android/gms/internal/zzgz.class
 com/google/android/gms/maps/StreetViewPanoramaView.class
 org/apache/http/impl/cookie/BasicCommentHandler.class
-com/google/android/gms/appindexing/AppIndexApi$ActionResult.class
 com/b_tree/telartes/adapter/AgendaAdapter.class
+com/google/android/gms/appindexing/AppIndexApi$ActionResult.class
 com/google/android/gms/internal/zzdg$zzc.class
 com/google/android/gms/internal/zzbw.class
 org/apache/http/conn/BasicManagedEntity.class

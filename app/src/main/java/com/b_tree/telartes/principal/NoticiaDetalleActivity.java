@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.b_tree.telartes.Entidades.Noticia;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
+import com.bluejamesbond.text.DocumentView;
 import com.squareup.picasso.Picasso;
 
 
@@ -19,7 +20,7 @@ public class NoticiaDetalleActivity extends BaseTelartesActivity {
     private TextView lblTitulo;
     private  TextView lbl_fecha;
     private TextView lbl_fuente;
-    private WebView lbl_descripcion;
+    private DocumentView txt_n_noticia;
     private ImageView imgNoticias;
     private Noticia noticia;
     private TextView txtEnlaceAutor;
@@ -34,7 +35,7 @@ public class NoticiaDetalleActivity extends BaseTelartesActivity {
     protected void inicializarVariables(Bundle savedInstanceState) {
         lblTitulo = (TextView)findViewById(R.id.lbl_titulo_noticia);
         lbl_fecha = (TextView)findViewById(R.id.lbl_fecha);
-        lbl_descripcion = (WebView)findViewById(R.id.lbl_descripcion);
+        txt_n_noticia = (DocumentView)findViewById(R.id.txt_n_noticia);
         imgNoticias = (ImageView)findViewById(R.id.img_noticia);
         txtEnlaceAutor = (TextView)findViewById(R.id.txt_enlace_autor);
         txtNombreAutor = (TextView)findViewById(R.id.txt_nombre_autor);
@@ -52,12 +53,11 @@ public class NoticiaDetalleActivity extends BaseTelartesActivity {
 
     @Override
     protected void instaciarAsignarIGU(Bundle savedInstanceState) {
-        String htmlText = "<html><body style=\"text-align:justify\"> %s </body></Html>";
-        String myData = "Hello World! This tutorial is to show demo of displaying text with justify alignment in WebView.";
+
         if(noticia!=null){
             lblTitulo.setText(noticia.getTitulo());
             lbl_fecha.setText(noticia.getFecha());
-            lbl_descripcion.loadData(String.format(htmlText, noticia.getDescripcion()), "text/html", "utf-8");
+            txt_n_noticia.setText(noticia.getDescripcion());
             Picasso.with(getBaseContext()).load(noticia.getImagen()).into(imgNoticias);
             txtEnlaceAutor.setText(noticia.getAutorEnlace());
             txtNombreAutor.setText(noticia.getAutorNombre());
