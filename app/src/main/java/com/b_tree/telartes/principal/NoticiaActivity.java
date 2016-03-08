@@ -122,11 +122,7 @@ public class NoticiaActivity extends BaseTelartesActivity {
     @Override
     protected void instaciarAsignarIGU(Bundle savedInstanceState) {
 
-
-
     }
-
-
 
     @Override
     protected int getResLayout() {
@@ -174,8 +170,8 @@ public class NoticiaActivity extends BaseTelartesActivity {
         popup.setFocusable(true);
 
         // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
-        int OFFSET_X = 30;
-        int OFFSET_Y = 30;
+        int OFFSET_X = 90;
+        int OFFSET_Y = 90;
 
         // Clear the default translucent background
         //popup.setBackgroundDrawable(new BitmapDrawable());

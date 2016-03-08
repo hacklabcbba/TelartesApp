@@ -47,7 +47,7 @@ public class NoticiaAdapter extends ArrayAdapter<Noticia> {
         Noticia item = getItem(position);
         holder.lblNombre.setText(item.getTitulo());
         holder.lblDescripcion.setText(item.getDescripcion());
-        holder.lblFecha.setText("Subido por "+item.getEnviado_por()+" el "+item.getFecha());
+        holder.lblFecha.setText(item.getFecha());
         Picasso.with(getContext()).load(item.getImagen()).into(holder.img_noticias);
 
         return convertView;

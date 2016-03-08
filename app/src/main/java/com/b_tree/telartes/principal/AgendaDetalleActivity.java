@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.b_tree.telartes.Entidades.AgendaCultural;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
+import com.bluejamesbond.text.DocumentView;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -18,7 +19,7 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
     private TextView txtTitulo;
     private TextView txtfecha;
     private TextView txtEnlace;
-    private WebView txtDescripcion;
+    private DocumentView txtDescripcion;
     private ImageView imgAgenda;
     private TextView txtDepartamento;
     private TextView txtFechaEvento;
@@ -35,7 +36,7 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
         txtTitulo = (TextView)findViewById(R.id.txt_da_titulo);
         txtfecha = (TextView)findViewById(R.id.txt_da_fecha);
         txtEnlace = (TextView)findViewById(R.id.txt_da_enlace);
-        txtDescripcion = (WebView)findViewById(R.id.txt_da_descripcion);
+        txtDescripcion = (DocumentView)findViewById(R.id.txt_da_descripcion);
         imgAgenda = (ImageView)findViewById(R.id.img_da_agenda);
         txtDepartamento = (TextView)findViewById(R.id.txt_da_departamento);
         txtFechaEvento = (TextView)findViewById(R.id.txt_da_fecha_evento);
@@ -52,18 +53,14 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
 
     @Override
     protected void instaciarAsignarIGU(Bundle savedInstanceState) {
-        String htmlText = "<html><body style=\"text-align:justify\"> %s </body></Html>";
-        String myData = "Hello World! This tutorial is to show demo of displaying text with justify alignment in WebView.";
         if(agenda!=null){
-              txtTitulo.setText(agenda.getTitulo());
-              txtfecha.setText(agenda.getFecha());
-              txtDescripcion.loadData(String.format(htmlText, agenda.getDescripcion()), "text/html", "utf-8");
-                txtDepartamento.setText("Departamento: "+agenda.getDepartamento());
+            txtTitulo.setText(agenda.getTitulo());
+            txtfecha.setText(agenda.getFecha());
+            txtDescripcion.setText(agenda.getDescripcion());
+            txtDepartamento.setText("Departamento: "+agenda.getDepartamento());
             txtFechaEvento.setText("Fecha: "+"De "+ agenda.getFechainicio()+ " hasta "+agenda.getFechafin());
-            txtCosto.setText("Costo: Entrada libre");
+            txtCosto.setText("Costo: "+agenda.getCosto() );
             txtLugar.setText("Lugar/Direccion: "+agenda.getLugar_direccion());
-
-//            lbl_descripcion.setText(agenda.getDescripcion());
             Picasso.with(getBaseContext()).load(agenda.getImagen()).into(imgAgenda);
         }
 

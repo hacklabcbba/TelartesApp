@@ -351,7 +351,7 @@
     <string name="accept">Accept</string>
     <!-- From: file:/home/noemi/martadero/telartes/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="app_name">TelArtes</string>
+    <string name="app_name">Telartes</string>
     <!-- From: file:/home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/res/values/auth_strings.xml -->
     <eat-comment/>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>

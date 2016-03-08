@@ -165,9 +165,9 @@ MERGED from [com.android.support:support-v4:23.1.1] /home/noemi/martadero/telart
 	android:allowBackup
 		ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:11:9-35
 	android:icon
-		ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:12:9-43
+		ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:12:9-36
 	android:theme
-		ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:12:44-75
+		ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:12:37-68
 	android:name
 		ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:10:9-51
 meta-data#com.google.android.maps.v2.API_KEY

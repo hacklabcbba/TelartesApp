@@ -198,6 +198,7 @@ com/google/ads/AdSize.class
 com/google/android/gms/location/places/PlaceFilter$zza.class
 com/google/android/gms/internal/zzcm.class
 org/apache/http/impl/client/RequestWrapper.class
+com/bluejamesbond/text/DocumentView.class
 android/support/v4/media/MediaDescriptionCompat.class
 android/support/v4/media/session/PlaybackStateCompat$State.class
 org/apache/http/client/utils/URLEncodedUtils.class
@@ -851,7 +852,6 @@ org/apache/http/impl/conn/tsccm/BasicPoolEntryRef.class
 android/support/v4/view/animation/LookupTableInterpolator.class
 org/apache/http/params/CoreProtocolPNames.class
 com/google/android/gms/wearable/DataApi$DataItemResult.class
-com/b_tree/telartes/principal/ConvocatoriaActivity$6.class
 com/google/android/gms/internal/zzjh.class
 com/google/android/gms/auth/zzd.class
 com/google/ads/mediation/MediationInterstitialAdapter.class
@@ -1032,7 +1032,6 @@ com/b_tree/telartes/principal/ConvocatoriaDetalleActivity.class
 com/google/android/gms/wearable/ChannelApi$CloseReason.class
 org/apache/http/HttpResponseInterceptor.class
 com/google/android/gms/appinvite/AppInviteInvitation$IntentBuilder.class
-com/b_tree/telartes/Entidades/ConvocatoriaDao.class
 com/google/android/gms/internal/zzdr.class
 org/apache/http/protocol/HttpExpectationVerifier.class
 com/google/android/gms/internal/zzfq.class

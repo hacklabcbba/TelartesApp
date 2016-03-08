@@ -60,14 +60,14 @@ public class AgendaCultural implements Serializable{
         try {
             titulo = android.text.Html.fromHtml(jsonObject.getString("node_title")).toString();
             campo =  android.text.Html.fromHtml(jsonObject.getString("campo")).toString();
-            fecha = jsonObject.getString("fecha de mensaje");
             costo = jsonObject.getString("costo");
             departamento =  android.text.Html.fromHtml(jsonObject.getString("departamento")).toString();
             descripcion =  android.text.Html.fromHtml(jsonObject.getString("descripción")).toString();
             enlace =    android.text.Html.fromHtml(jsonObject.getString("enlace")).toString();
-            lugar_direccion =  android.text.Html.fromHtml(jsonObject.getString("lugar/dirección")).toString();
+            lugar_direccion =  jsonObject.getString("lugar/dirección");
             archivo =  android.text.Html.fromHtml(jsonObject.getString("pdf")).toString();
             this.nid = Integer.parseInt(jsonObject.getString("nid"));
+            fecha =  android.text.Html.fromHtml(jsonObject.getString("fecha inicio")).toString();
             enviado_por = jsonObject.getString("enviado por");
             fechainicio =  android.text.Html.fromHtml(jsonObject.getString("fecha inicio")).toString();
             fechafin =  android.text.Html.fromHtml(jsonObject.getString("fecha fin")).toString();

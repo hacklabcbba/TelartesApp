@@ -56,7 +56,7 @@ public class NoticiaDetalleActivity extends BaseTelartesActivity {
 
         if(noticia!=null){
             lblTitulo.setText(noticia.getTitulo());
-            lbl_fecha.setText(noticia.getFecha());
+            lbl_fecha.setText("subido por: "+noticia.getEnviado_por()+ " el "+noticia.getFecha());
             txt_n_noticia.setText(noticia.getDescripcion());
             Picasso.with(getBaseContext()).load(noticia.getImagen()).into(imgNoticias);
             txtEnlaceAutor.setText(noticia.getAutorEnlace());

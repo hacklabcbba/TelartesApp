@@ -653,8 +653,8 @@ android/support/annotation/RequiresPermission.class
 com/google/android/gms/internal/zzgz.class
 com/google/android/gms/maps/StreetViewPanoramaView.class
 org/apache/http/impl/cookie/BasicCommentHandler.class
-com/b_tree/telartes/adapter/AgendaAdapter.class
 com/google/android/gms/appindexing/AppIndexApi$ActionResult.class
+com/b_tree/telartes/adapter/AgendaAdapter.class
 com/google/android/gms/internal/zzdg$zzc.class
 com/google/android/gms/internal/zzbw.class
 org/apache/http/conn/BasicManagedEntity.class
@@ -852,7 +852,6 @@ org/apache/http/impl/conn/tsccm/BasicPoolEntryRef.class
 android/support/v4/view/animation/LookupTableInterpolator.class
 org/apache/http/params/CoreProtocolPNames.class
 com/google/android/gms/wearable/DataApi$DataItemResult.class
-com/b_tree/telartes/principal/ConvocatoriaActivity$6.class
 com/google/android/gms/internal/zzjh.class
 com/google/android/gms/auth/zzd.class
 com/google/ads/mediation/MediationInterstitialAdapter.class
@@ -1033,7 +1032,6 @@ com/b_tree/telartes/principal/ConvocatoriaDetalleActivity.class
 com/google/android/gms/wearable/ChannelApi$CloseReason.class
 org/apache/http/HttpResponseInterceptor.class
 com/google/android/gms/appinvite/AppInviteInvitation$IntentBuilder.class
-com/b_tree/telartes/Entidades/ConvocatoriaDao.class
 com/google/android/gms/internal/zzdr.class
 org/apache/http/protocol/HttpExpectationVerifier.class
 com/google/android/gms/internal/zzfq.class

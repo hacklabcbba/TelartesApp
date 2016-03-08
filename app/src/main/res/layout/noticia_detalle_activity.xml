@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/blanco">
     <include
-
         layout="@layout/view_header_share"/>
     <ScrollView
         android:layout_width="match_parent"
@@ -22,11 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Noticia de ultimo momento"
+            android:text="Noticia de ultimo momentosadasdas asdasdadasdasda"
             android:id="@+id/lbl_titulo_noticia"
-            android:maxLines="2"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

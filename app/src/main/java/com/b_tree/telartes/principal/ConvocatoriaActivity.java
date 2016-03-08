@@ -63,8 +63,8 @@ public class ConvocatoriaActivity extends BaseTelartesActivity {
                 startActivity(i);
             }
         });
-        convocatoriaList = Global.getMiglobal().getDaosession().getConvocatoriaDao().loadAll();
-        if (convocatoriaList.isEmpty()){
+       // convocatoriaList = Global.getMiglobal().getDaosession().getConvocatoriaDao().loadAll();
+       // if (convocatoriaList.isEmpty()){
 
             convocatoriaService = new ConvocatoriaService(this) {
                 @Override
@@ -91,18 +91,18 @@ public class ConvocatoriaActivity extends BaseTelartesActivity {
             };
             convocatoriaService.obtenerConvocatorias();
 
-        }else{
-            convocatoriaAdapter = new ConvocatoriaAdapter(getBaseContext(), convocatoriaList);
-            lvConvocatoria.setAdapter(convocatoriaAdapter);
-            lvConvocatoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaDetalleActivity.class);
-                    i.putExtra("convocatoria", convocatoriaList.get(position));
-                    startActivity(i);
-                }
-            });
-        }
+//        }else{
+//            convocatoriaAdapter = new ConvocatoriaAdapter(getBaseContext(), convocatoriaList);
+//            lvConvocatoria.setAdapter(convocatoriaAdapter);
+//            lvConvocatoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaDetalleActivity.class);
+//                    i.putExtra("convocatoria", convocatoriaList.get(position));
+//                    startActivity(i);
+//                }
+//            });
+       // }
 
     }
 
@@ -160,8 +160,8 @@ public class ConvocatoriaActivity extends BaseTelartesActivity {
         popup.setFocusable(true);
 
         // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
-        int OFFSET_X = 30;
-        int OFFSET_Y = 30;
+        int OFFSET_X = 90;
+        int OFFSET_Y = 90;
 
         // Clear the default translucent background
         //popup.setBackgroundDrawable(new BitmapDrawable());
