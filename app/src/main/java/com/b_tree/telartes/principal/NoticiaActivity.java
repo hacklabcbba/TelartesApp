@@ -1,9 +1,13 @@
 package com.b_tree.telartes.principal;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -42,6 +46,7 @@ public class NoticiaActivity extends BaseTelartesActivity {
     private ImageView menu_filter;
     private ImageView menuSetting;
     private Point p;
+    private static final String LIST_FRAGMENT_TAG = "list_fragment";
     @Override
     protected String getScreenLabel() {
         return "NOTICIAS";
@@ -63,15 +68,15 @@ public class NoticiaActivity extends BaseTelartesActivity {
         menu_filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent i = new Intent(NoticiaActivity.this, NoticiaCategoriaActivity.class);
-                startActivity(i);
+                toggleList();
+               // Intent i = new Intent(NoticiaActivity.this, NoticiaCategoriaActivity.class);
+                //startActivity(i);
             }
         });
 
         //global=
-        noticiasList = Global.getMiglobal().getDaosession().getNoticiaDao().loadAll();
-        if(noticiasList.isEmpty()){
+        //noticiasList = Global.getMiglobal().getDaosession().getNoticiaDao().loadAll();
+        //if(noticiasList.isEmpty()){
             noticias = new NoticiasService(this) {
                 @Override
                 public void onSuccessObtenerNoticias(List<Noticia> noticias) {
@@ -103,18 +108,18 @@ public class NoticiaActivity extends BaseTelartesActivity {
                 }
             };
             noticias.ObtenerNoticias();
-        }else{
-            noticiaAdapter = new NoticiaAdapter(getBaseContext(), noticiasList);
-            lvNoticias.setAdapter(noticiaAdapter);
-            lvNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent i = new Intent(NoticiaActivity.this, NoticiaDetalleActivity.class);
-                    i.putExtra("noticia", noticiasList.get(position));
-                    startActivity(i);
-                }
-            });
-        }
+//        }else{
+//            noticiaAdapter = new NoticiaAdapter(getBaseContext(), noticiasList);
+//            lvNoticias.setAdapter(noticiaAdapter);
+//            lvNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    Intent i = new Intent(NoticiaActivity.this, NoticiaDetalleActivity.class);
+//                    i.putExtra("noticia", noticiasList.get(position));
+//                    startActivity(i);
+//                }
+//            });
+//        }
 
 
     }
@@ -168,10 +173,11 @@ public class NoticiaActivity extends BaseTelartesActivity {
         popup.setWidth(popupWidth);
         popup.setHeight(popupHeight);
         popup.setFocusable(true);
+//        popup.setAnimationStyle();
 
         // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
-        int OFFSET_X = 90;
-        int OFFSET_Y = 90;
+        int OFFSET_X = 110;
+        int OFFSET_Y = 110;
 
         // Clear the default translucent background
         //popup.setBackgroundDrawable(new BitmapDrawable());
@@ -194,4 +200,22 @@ public class NoticiaActivity extends BaseTelartesActivity {
 //        void onNoticiaRead(Noticia noticia);
 //    }
 
+
+    @SuppressLint("NewApi")
+    private void toggleList() {
+        Fragment f = getFragmentManager().findFragmentByTag(LIST_FRAGMENT_TAG);
+        if (f != null) {
+            getFragmentManager().popBackStack();
+        } else {
+            getFragmentManager().beginTransaction()
+                    .setCustomAnimations(R.anim.slide_up,
+                            R.anim.slide_down,
+                            R.anim.slide_up,
+                            R.anim.slide_down)
+                    .add(R.id.list_fragment_container, SlidingListFragment
+                                    .instantiate(this, SlidingListFragment.class.getName()),
+                            LIST_FRAGMENT_TAG
+                    ).addToBackStack(null).commit();
+        }
+    }
 }

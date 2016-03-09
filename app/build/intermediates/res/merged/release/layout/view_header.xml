@@ -95,9 +95,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/plomo_obscuro"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/plomo_normal"/>
 
 </LinearLayout><!-- From: file:/home/noemi/martadero/telartes/app/src/main/res/layout/view_header.xml -->

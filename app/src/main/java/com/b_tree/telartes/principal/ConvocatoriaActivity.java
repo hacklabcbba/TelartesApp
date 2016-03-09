@@ -160,8 +160,8 @@ public class ConvocatoriaActivity extends BaseTelartesActivity {
         popup.setFocusable(true);
 
         // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
-        int OFFSET_X = 90;
-        int OFFSET_Y = 90;
+        int OFFSET_X = 110;
+        int OFFSET_Y = 110;
 
         // Clear the default translucent background
         //popup.setBackgroundDrawable(new BitmapDrawable());

@@ -13,50 +13,53 @@
 
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/icon_banner"
+            android:src="@mipmap/telartes_menu"
             android:layout_gravity="left"
-            android:layout_weight="0.20"
-            android:padding="3dp"
-           />
+            android:layout_weight="0.50"
+            android:scaleType="fitXY"
+            android:padding="5dp"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.80"
-            android:gravity="right">
+            android:layout_weight="0.50"
+            >
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_setting"
-                android:id="@+id/imageView4"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"/>
+                android:src="@mipmap/tuerca"
+                android:id="@+id/menu_setting"
+                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/imageView3"
+                android:layout_toStartOf="@+id/imageView3" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageView3"
-                android:src="@mipmap/ic_information"
-
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                />
+                android:src="@mipmap/info"
+                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/img_share"
+                android:layout_toStartOf="@+id/img_share" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageView5"
-                android:src="@mipmap/ic_share"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:layout_marginRight="5dp"/>
-        </LinearLayout>
-
-
+                android:id="@+id/img_share"
+                android:src="@mipmap/compartir"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/baner"
@@ -92,18 +95,8 @@
             android:textColor="@color/text_header"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:src="@mipmap/ic_menu"/>
-
-
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/plomo_obscuro"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"

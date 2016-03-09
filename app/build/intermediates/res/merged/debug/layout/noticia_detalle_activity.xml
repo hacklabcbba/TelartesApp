@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Subido por:"
+            android:text="Subido por: "
             android:id="@+id/lbl_fecha" />
 
         <LinearLayout
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Nombre del autor:"
+                android:text="Nombre del autor: "
                 android:id="@+id/txt_auto" />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Enlace del autor:"
+                android:text="Enlace del autor: "
                 android:id="@+id/textView2" />
 
             <TextView
@@ -80,33 +80,41 @@
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@mipmap/none"/>
-        <com.bluejamesbond.text.DocumentView xmlns:ext="http://schemas.android.com/apk/res-auto"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/txt_n_noticia"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            ext:documentView_antialias="true"
-            ext:documentView_cacheConfig="auto_quality"
-            ext:documentView_hyphen="-"
-            ext:documentView_maxLines="100"
-            ext:documentView_offsetX="5dp"
-            ext:documentView_offsetY="5dp"
-            ext:documentView_insetPadding="5dp"
-            ext:documentView_insetPaddingBottom="5dp"
-            ext:documentView_insetPaddingLeft="5dp"
-            ext:documentView_insetPaddingRight="5dp"
-            ext:documentView_insetPaddingTop="5dp"
-            ext:documentView_reverse="false"
-            ext:documentView_textAlignment="justified"
-            ext:documentView_textColor="@android:color/black"
-            ext:documentView_textFormat="plain"
-            ext:documentView_textSize="16dp"
-            ext:documentView_textSubPixel="true"
-            ext:documentView_text="dfdsdfsd"
-             />
+        <!--<com.bluejamesbond.text.DocumentView xmlns:ext="http://schemas.android.com/apk/res-auto"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:id="@+id/txt_n_noticia"-->
+            <!--android:selectAllOnFocus="true"-->
+            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+            <!--ext:documentView_antialias="true"-->
+            <!--ext:documentView_cacheConfig="auto_quality"-->
+            <!--ext:documentView_hyphen="-"-->
+            <!--ext:documentView_maxLines="100"-->
+            <!--ext:documentView_offsetX="5dp"-->
+            <!--ext:documentView_offsetY="5dp"-->
+            <!--ext:documentView_insetPadding="5dp"-->
+            <!--ext:documentView_insetPaddingBottom="5dp"-->
+            <!--ext:documentView_insetPaddingLeft="5dp"-->
+            <!--ext:documentView_insetPaddingRight="5dp"-->
+            <!--ext:documentView_insetPaddingTop="5dp"-->
+            <!--ext:documentView_reverse="false"-->
+            <!--ext:documentView_textAlignment="justified"-->
+            <!--ext:documentView_textColor="@android:color/black"-->
+            <!--ext:documentView_textFormat="plain"-->
+            <!--ext:documentView_textSize="16dp"-->
+            <!--ext:documentView_textSubPixel="true"-->
+            <!--ext:documentView_text="dfdsdfsd"-->
+             <!--/>-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/txt_n_noticia" />
+
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <TextView
             android:layout_width="match_parent"

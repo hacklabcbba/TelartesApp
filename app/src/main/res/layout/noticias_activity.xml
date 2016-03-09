@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    tools:context="com.b_tree.telartes.principal.NoticiaActivity">
     <include
-
-        layout="@layout/view_header"/>
+        layout="@layout/view_header_filter"
+        android:id="@+id/include" />
     <ListView
         android:id="@+id/lv_noticias"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        ></ListView>
+        android:layout_alignTop="@+id/list_fragment_container"></ListView>
+    <FrameLayout
+        android:id="@+id/list_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/include" />
 
-</LinearLayout>
+</RelativeLayout>

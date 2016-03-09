@@ -2,6 +2,10 @@ package com.b_tree.telartes.principal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.view.MotionEvent;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,12 +23,13 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
     private TextView txtTitulo;
     private TextView txtfecha;
     private TextView txtEnlace;
-    private DocumentView txtDescripcion;
+    private TextView txtDescripcion;
     private ImageView imgAgenda;
     private TextView txtDepartamento;
     private TextView txtFechaEvento;
     private TextView txtCosto;
     private TextView txtLugar;
+    private ImageView imgShare;
     private AgendaCultural agenda;
     @Override
     protected String getScreenLabel() {
@@ -36,12 +41,33 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
         txtTitulo = (TextView)findViewById(R.id.txt_da_titulo);
         txtfecha = (TextView)findViewById(R.id.txt_da_fecha);
         txtEnlace = (TextView)findViewById(R.id.txt_da_enlace);
-        txtDescripcion = (DocumentView)findViewById(R.id.txt_da_descripcion);
+        txtDescripcion = (TextView)findViewById(R.id.txt_da_descripcion);
         imgAgenda = (ImageView)findViewById(R.id.img_da_agenda);
         txtDepartamento = (TextView)findViewById(R.id.txt_da_departamento);
         txtFechaEvento = (TextView)findViewById(R.id.txt_da_fecha_evento);
         txtCosto = (TextView)findViewById(R.id.txt_da_costo);
         txtLugar = (TextView)findViewById(R.id.txt_da_lugar);
+        imgShare = (ImageView)findViewById(R.id.img_share);
+        imgShare.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View view, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        imgShare.setBackgroundColor(getResources().getColor(R.color.plomo));
+                        imgShare.setImageDrawable(getResources().getDrawable(R.mipmap.compartir_hover));
+                        Intent sendIntent = new Intent();
+                        sendIntent.setAction(Intent.ACTION_SEND);
+                        sendIntent.putExtra(Intent.EXTRA_TEXT, "Este texto se enviara.");
+                        sendIntent.setType("text/plain");
+                        startActivity(sendIntent);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        imgShare.setBackgroundColor(getResources().getColor(R.color.blanco));
+                        imgShare.setImageDrawable(getResources().getDrawable(R.mipmap.compartir));
+
+                }
+                return true;
+            }
+        });
         Intent i = getIntent();
         this.agenda = (AgendaCultural)i.getSerializableExtra("agenda");
     }
@@ -56,17 +82,21 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
         if(agenda!=null){
             txtTitulo.setText(agenda.getTitulo());
             txtfecha.setText(agenda.getFecha());
-            txtDescripcion.setText(agenda.getDescripcion());
+            txtDescripcion.setText(Html.fromHtml(agenda.getDescripcion()));
             txtDepartamento.setText("Departamento: "+agenda.getDepartamento());
-            txtFechaEvento.setText("Fecha: "+"De "+ agenda.getFechainicio()+ " hasta "+agenda.getFechafin());
-            txtCosto.setText("Costo: "+agenda.getCosto() );
-            txtLugar.setText("Lugar/Direccion: "+agenda.getLugar_direccion());
+            txtFechaEvento.setText("Fecha: " + "De " + agenda.getFechainicio() + " hasta " + agenda.getFechafin());
+            txtCosto.setText("Costo: " + agenda.getCosto());
+            txtLugar.setText("Lugar/Direccion: " + agenda.getLugar_direccion());
             Picasso.with(getBaseContext()).load(agenda.getImagen()).into(imgAgenda);
+            if (!agenda.getEnlace().isEmpty()){
+                ((TextView)findViewById(R.id.txt_da_enlacetx)).setVisibility(View.INVISIBLE);
+                txtEnlace.setText(Html.fromHtml(agenda.getEnlace()));
+                txtEnlace.setClickable(true);
+                txtEnlace.setMovementMethod(LinkMovementMethod.getInstance());
+            }
         }
 
     }
-
-
 
 
 }

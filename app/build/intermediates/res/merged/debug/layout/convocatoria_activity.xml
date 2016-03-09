@@ -5,7 +5,7 @@
     android:background="@color/blanco">
     <include
 
-        layout="@layout/view_header"/>
+        layout="@layout/view_header_filter"/>
     <ListView
         android:background="@color/blanco"
         android:id="@+id/lv_convocatoria"

@@ -54,9 +54,9 @@ public class Noticia  implements Serializable{
         try {
 
             this.titulo = android.text.Html.fromHtml(jsonObject.getString("node_title")).toString();
-            this.descripcion = android.text.Html.fromHtml(jsonObject.getString("descripcion")).toString();
+            this.descripcion = jsonObject.getString("descripcion");
             this.categoria = jsonObject.getString("categoría");
-            this.fuente = android.text.Html.fromHtml(jsonObject.getString("fuente del item de noticia")).toString();
+            this.fuente = jsonObject.getString("fuente del item de noticia");
             this.imagen = (jsonObject.getString("imagen"));
             int start = imagen.indexOf("src=\"") + 5;
             int end = imagen.indexOf("\"", start);
@@ -68,7 +68,6 @@ public class Noticia  implements Serializable{
             URI uri = new URI(jsonObject.getString("enlace del autor"));
             String domain = uri.getHost();
             this.autorEnlace= "http://"+domain;
-
             this.autorNombre = jsonObject.getString("nombre del autor");
             Log.d("ERROR FUENTE ", fuente);
         }catch (Exception e){

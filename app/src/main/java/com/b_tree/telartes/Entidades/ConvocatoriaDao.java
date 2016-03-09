@@ -20,7 +20,7 @@ public class ConvocatoriaDao extends AbstractDao<Convocatoria, Long> {
     public static final String TABLENAME = "CONVOCATORIA";
 
     /**
-     * Properties of entity Convocatoria.<br/>
+     * Properties of entity convocatoria.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

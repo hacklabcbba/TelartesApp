@@ -7,9 +7,7 @@ import android.view.View;
 import com.b_tree.telartes.CircleCheckBox;
 import com.b_tree.telartes.R;
 
-/**
- * Created by noemi on 07-03-16.
- */
+
 public class ListItem implements Item {
     private final String  textCategoria;
     private final int colorCheck;
@@ -28,7 +26,6 @@ public class ListItem implements Item {
         View view;
         if (convertView == null) {
             view = (View) inflater.inflate(R.layout.my_list_item, null);
-            // Do some initialization
         } else {
             view = convertView;
         }
