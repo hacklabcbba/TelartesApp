@@ -9,11 +9,16 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-;import com.b_tree.telartes.R;
+;import com.b_tree.telartes.Entidades.Actualizacion;
+import com.b_tree.telartes.Entidades.ActualizacionDao;
+import com.b_tree.telartes.Entidades.DaoSession;
+import com.b_tree.telartes.Global;
+import com.b_tree.telartes.R;
 
-/**
- * Created by Diana on 26/09/2015.
- */
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+
 public abstract class BaseTelartesActivity extends FragmentActivity{
     TextView lblTitulo;
     View btnAtras;
@@ -56,6 +61,8 @@ public abstract class BaseTelartesActivity extends FragmentActivity{
                 baner.setBackgroundColor(getResources().getColor(R.color.rojo));
             }
         }
+        iniciarActualizacion();
+
         inicializarVariables(savedInstanceState);
 
         instaciarAsignarIGU(savedInstanceState);
@@ -90,6 +97,19 @@ public abstract class BaseTelartesActivity extends FragmentActivity{
 
     private void overridePendingTransitionEnd() {
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+    }
+
+    private void iniciarActualizacion(){
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat dateformat = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss");
+        String dateNow = dateformat.format(c.getTime());
+        ActualizacionDao actualizacionDao =  Global.getMiglobal().getDaosession().getActualizacionDao();
+        if (actualizacionDao.loadAll().isEmpty()){
+            actualizacionDao.insert(new Actualizacion( null,"Noticia",dateNow, 0));
+            actualizacionDao.insert(new Actualizacion( null,"Agenda",dateNow, 0));
+            actualizacionDao.insert(new Actualizacion( null,"Convocatoria",dateNow, 0));
+            actualizacionDao.insert(new Actualizacion( null,"Categoria",dateNow, 0));
+        }
     }
 
 

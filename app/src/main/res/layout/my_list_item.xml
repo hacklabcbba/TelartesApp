@@ -7,7 +7,7 @@
     android:background="@color/blanco">
 
 
-    <com.b_tree.telartes.CircleCheckBox
+    <com.b_tree.telartes.Utils.CircleCheckBox
         android:id="@+id/check_filter"
         android:layout_width="match_parent"
         android:layout_height="50dp"

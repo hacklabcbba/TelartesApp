@@ -19,7 +19,6 @@
             android:src="@mipmap/telartes_menu"
             android:layout_gravity="left"
             android:layout_weight="0.50"
-            android:scaleType="fitXY"
             android:padding="5dp"/>
 
         <RelativeLayout
@@ -82,7 +81,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Impacto Tutor"
+            android:text="Noticias"
             android:textColor="@color/text_header"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

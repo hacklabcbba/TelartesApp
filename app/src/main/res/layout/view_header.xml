@@ -16,7 +16,6 @@
             android:src="@mipmap/telartes_menu"
             android:layout_gravity="left"
             android:layout_weight="0.50"
-            android:scaleType="fitXY"
             android:padding="5dp"/>
 
         <RelativeLayout

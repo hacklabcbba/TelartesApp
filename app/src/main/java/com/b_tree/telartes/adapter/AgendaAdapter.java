@@ -1,5 +1,6 @@
 package com.b_tree.telartes.adapter;
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,7 @@ public class AgendaAdapter  extends ArrayAdapter<AgendaCultural> {
         AgendaCultural item = getItem(position);
         holder.txttitulo.setText(item.getTitulo());
         holder.txtFecha.setText("De "+item.getFechainicio() + " hasta " +item.getFechafin() );
-        holder.txtDescripcion.setText(item.getDescripcion());
+        holder.txtDescripcion.setText(Html.fromHtml(item.getDescripcion()));
         Picasso.with(getContext()).load(item.getImagen()).into(holder.imgAgenda);
         holder.txtLugar.setText(item.getDepartamento());
         return convertView;

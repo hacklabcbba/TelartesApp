@@ -1,14 +1,14 @@
 package com.b_tree.telartes.principal;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,32 +20,37 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 
+import com.b_tree.telartes.Entidades.Actualizacion;
+import com.b_tree.telartes.Entidades.ActualizacionDao;
+import com.b_tree.telartes.Entidades.DaoSession;
 import com.b_tree.telartes.Entidades.Noticia;
-import com.b_tree.telartes.Entidades.NoticiaDao;
 import com.b_tree.telartes.Global;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.adapter.NoticiaAdapter;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.b_tree.telartes.rest.NoticiasService;
+import com.b_tree.telartes.rest.NuevaNoticiaService;
+import com.b_tree.telartes.rest.RestClientJar;
 
 import org.apache.http.Header;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-import de.greenrobot.dao.query.Query;
 
-/**
- * Created by Diana on 27/09/2015.
- */
-public class NoticiaActivity extends BaseTelartesActivity {
+public class NoticiaActivity extends BaseTelartesActivity implements SwipeRefreshLayout.OnRefreshListener {
     private ListView lvNoticias;
+    private SwipeRefreshLayout swipeLayout;
     private NoticiaAdapter noticiaAdapter;
-    private NoticiasService noticias;
+    private NoticiasService noticiasService;
+    private NuevaNoticiaService nuevaNoticiaService;
     public List<Noticia> noticiasList;
     private ImageView menu_filter;
     private ImageView menuSetting;
     private Point p;
+    private ActualizacionDao actualizacionDao;
     private static final String LIST_FRAGMENT_TAG = "list_fragment";
     @Override
     protected String getScreenLabel() {
@@ -56,8 +61,9 @@ public class NoticiaActivity extends BaseTelartesActivity {
     protected void inicializarVariables(Bundle savedInstanceState) {
         noticiasList = new ArrayList<>();
         lvNoticias = (ListView) findViewById(R.id.lv_noticias);
-        menu_filter = (ImageView)findViewById(R.id.image_menu);
-        menuSetting = (ImageView)findViewById(R.id.menu_setting);
+        menu_filter = (ImageView) findViewById(R.id.image_menu);
+        menuSetting = (ImageView) findViewById(R.id.menu_setting);
+        actualizacionDao = Global.getMiglobal().getDaosession().getActualizacionDao();
         menuSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,65 +71,110 @@ public class NoticiaActivity extends BaseTelartesActivity {
                     showPopup(NoticiaActivity.this, p);
             }
         });
-        menu_filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggleList();
-               // Intent i = new Intent(NoticiaActivity.this, NoticiaCategoriaActivity.class);
-                //startActivity(i);
-            }
-        });
-
-        //global=
-        //noticiasList = Global.getMiglobal().getDaosession().getNoticiaDao().loadAll();
-        //if(noticiasList.isEmpty()){
-            noticias = new NoticiasService(this) {
+        if (RestClientJar.getInternetState(this)) {
+            List<Actualizacion> actNoticia = new ArrayList<>();
+            actNoticia = (actualizacionDao.queryBuilder().where(ActualizacionDao.Properties.Nombre.eq("Noticia"))).list();
+            final int idNoticiaActual = actNoticia.get(0).getIdActual();
+            final List<Actualizacion> finalActNoticia = actNoticia;
+            nuevaNoticiaService = new NuevaNoticiaService(this) {
                 @Override
-                public void onSuccessObtenerNoticias(List<Noticia> noticias) {
-                    noticiasList = noticias;
-                    Global.getMiglobal().getDaosession().getNoticiaDao().insertInTx(noticias);
-                    noticiaAdapter = new NoticiaAdapter(getBaseContext(), noticias);
+                public void onSuccessObtenerNuevaNoticias(Long nid) {
+                    if (nid > idNoticiaActual) {
+                        Calendar c = Calendar.getInstance();
+                        SimpleDateFormat dateformat = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss");
+                        String dateNow = dateformat.format(c.getTime());
+                        actualizacionDao.deleteByKey(finalActNoticia.get(0).getId());
+                        actualizacionDao.insertOrReplace(new Actualizacion(null, "Noticia", dateNow, Math.round(nid)));
+                        ConsumirNoticias();
+                    } else {
+                        noticiasList = Global.getMiglobal().getDaosession().getNoticiaDao().loadAll();
+                        noticiaAdapter = new NoticiaAdapter(getBaseContext(), noticiasList);
+                        lvNoticias.setAdapter(noticiaAdapter);
+                        lvNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Intent i = new Intent(NoticiaActivity.this, NoticiaDetalleActivity.class);
+                                i.putExtra("noticia", noticiasList.get(position));
+                                startActivity(i);
+                            }
+                        });
+                    }
                 }
 
                 @Override
                 public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
                     super.onFailure(i, headers, bytes, throwable);
-                    Log.d("ERROR ", throwable.getMessage());
+                    Log.d("Error al actualizar ", throwable.getMessage());
                 }
 
-                @Override
-                public void onFinish() {
-                    super.onFinish();
 
-
-                    lvNoticias.setAdapter(noticiaAdapter);
-                    lvNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent i = new Intent(NoticiaActivity.this, NoticiaDetalleActivity.class);
-                            i.putExtra("noticia", noticiasList.get(position));
-                            startActivity(i);
-                        }
-                    });
-                }
             };
-            noticias.ObtenerNoticias();
-//        }else{
-//            noticiaAdapter = new NoticiaAdapter(getBaseContext(), noticiasList);
-//            lvNoticias.setAdapter(noticiaAdapter);
-//            lvNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Intent i = new Intent(NoticiaActivity.this, NoticiaDetalleActivity.class);
-//                    i.putExtra("noticia", noticiasList.get(position));
-//                    startActivity(i);
-//                }
-//            });
-//        }
+            nuevaNoticiaService.ObtenerNuevaNoticias();
+        } else {
+            noticiasList = Global.getMiglobal().getDaosession().getNoticiaDao().loadAll();
+            noticiaAdapter = new NoticiaAdapter(getBaseContext(), noticiasList);
+            lvNoticias.setAdapter(noticiaAdapter);
+            lvNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent i = new Intent(NoticiaActivity.this, NoticiaDetalleActivity.class);
+                    i.putExtra("noticia", noticiasList.get(position));
+                    startActivity(i);
+                }
+            });
+        }
 
 
+        menu_filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleList();
+
+            }
+        });
+    }
+     //   swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+     //   swipeLayout.setOnRefreshListener(this);
+    public void ConsumirNoticias(){
+        noticiasService = new NoticiasService(getApplicationContext()) {
+            @Override
+            public void onSuccessObtenerNoticias(List<Noticia> noticias) {
+                noticiasList = noticias;
+                Global.getMiglobal().getDaosession().getNoticiaDao().insertInTx(noticias);
+                noticiaAdapter = new NoticiaAdapter(getBaseContext(), noticias);
+            }
+
+            @Override
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                super.onFailure(i, headers, bytes, throwable);
+                Log.d("ERROR ", throwable.getMessage());
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+                lvNoticias.setAdapter(noticiaAdapter);
+                lvNoticias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent i = new Intent(NoticiaActivity.this, NoticiaDetalleActivity.class);
+                        i.putExtra("noticia", noticiasList.get(position));
+                        startActivity(i);
+                    }
+                });
+            }
+        };
+        noticiasService.ObtenerNoticias();
     }
 
+
+    @Override public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+             //   swipeLayout.setRefreshing(false);
+            }
+        }, 5000);
+    }
     @Override
     protected void instaciarAsignarIGU(Bundle savedInstanceState) {
 
@@ -145,29 +196,19 @@ public class NoticiaActivity extends BaseTelartesActivity {
 
         int[] location = new int[2];
         ImageView button = (ImageView) findViewById(R.id.menu_setting);
-
-        // Get the x, y location and store it in the location[] array
-        // location[0] = x, location[1] = y.
         button.getLocationOnScreen(location);
-
-        //Initialize the Point with x, and y positions
         p = new Point();
         p.x = location[0];
         p.y = location[1];
     }
 
-    // The method that displays the popup.
     private void showPopup(final Activity context, Point p) {
         int popupWidth = 600;
         int popupHeight = 900;
-
-        // Inflate the popup_layout.xml
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.menu_pop);
         LayoutInflater layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = layoutInflater.inflate(R.layout.menu, viewGroup);
-
-        // Creating the PopupWindow
         final PopupWindow popup = new PopupWindow(context);
         popup.setContentView(layout);
         popup.setWidth(popupWidth);
@@ -195,11 +236,6 @@ public class NoticiaActivity extends BaseTelartesActivity {
             }
         });
     }
-//
-//    public static interface OnNoticiaReadyListener {
-//        void onNoticiaRead(Noticia noticia);
-//    }
-
 
     @SuppressLint("NewApi")
     private void toggleList() {
@@ -207,11 +243,7 @@ public class NoticiaActivity extends BaseTelartesActivity {
         if (f != null) {
             getFragmentManager().popBackStack();
         } else {
-            getFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.anim.slide_up,
-                            R.anim.slide_down,
-                            R.anim.slide_up,
-                            R.anim.slide_down)
+            getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_up,R.anim.slide_down)
                     .add(R.id.list_fragment_container, SlidingListFragment
                                     .instantiate(this, SlidingListFragment.class.getName()),
                             LIST_FRAGMENT_TAG

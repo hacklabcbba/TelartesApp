@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/blanco">
     <include
-
         layout="@layout/view_header_filter"/>
     <ListView
         android:background="@color/blanco"
@@ -12,5 +11,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         ></ListView>
-
 </LinearLayout>

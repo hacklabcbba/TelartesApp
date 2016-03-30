@@ -8,32 +8,32 @@ package com.bluejamesbond.text;
 
 public final class R {
 	public static final class attr {
-		public static final int documentView_antialias = 0x7f010050;
-		public static final int documentView_cacheConfig = 0x7f010056;
-		public static final int documentView_disallowInterceptTouch = 0x7f01005a;
-		public static final int documentView_fadeInAnimationStepDelay = 0x7f010058;
-		public static final int documentView_fadeInDuration = 0x7f010059;
-		public static final int documentView_hyphen = 0x7f01004c;
-		public static final int documentView_insetPadding = 0x7f010041;
-		public static final int documentView_insetPaddingBottom = 0x7f010045;
-		public static final int documentView_insetPaddingLeft = 0x7f010042;
-		public static final int documentView_insetPaddingRight = 0x7f010043;
-		public static final int documentView_insetPaddingTop = 0x7f010044;
-		public static final int documentView_lineHeightMultiplier = 0x7f010049;
-		public static final int documentView_maxLines = 0x7f01004b;
-		public static final int documentView_offsetX = 0x7f010046;
-		public static final int documentView_offsetY = 0x7f010047;
-		public static final int documentView_progressBar = 0x7f010057;
-		public static final int documentView_reverse = 0x7f01004a;
-		public static final int documentView_text = 0x7f010051;
-		public static final int documentView_textAlignment = 0x7f01004d;
-		public static final int documentView_textColor = 0x7f01004f;
-		public static final int documentView_textFormat = 0x7f010055;
-		public static final int documentView_textSize = 0x7f01004e;
-		public static final int documentView_textStyle = 0x7f010054;
-		public static final int documentView_textSubPixel = 0x7f010052;
-		public static final int documentView_textTypefacePath = 0x7f010053;
-		public static final int documentView_wordSpacingMultiplier = 0x7f010048;
+		public static final int documentView_antialias = 0x7f010052;
+		public static final int documentView_cacheConfig = 0x7f010058;
+		public static final int documentView_disallowInterceptTouch = 0x7f01005c;
+		public static final int documentView_fadeInAnimationStepDelay = 0x7f01005a;
+		public static final int documentView_fadeInDuration = 0x7f01005b;
+		public static final int documentView_hyphen = 0x7f01004e;
+		public static final int documentView_insetPadding = 0x7f010043;
+		public static final int documentView_insetPaddingBottom = 0x7f010047;
+		public static final int documentView_insetPaddingLeft = 0x7f010044;
+		public static final int documentView_insetPaddingRight = 0x7f010045;
+		public static final int documentView_insetPaddingTop = 0x7f010046;
+		public static final int documentView_lineHeightMultiplier = 0x7f01004b;
+		public static final int documentView_maxLines = 0x7f01004d;
+		public static final int documentView_offsetX = 0x7f010048;
+		public static final int documentView_offsetY = 0x7f010049;
+		public static final int documentView_progressBar = 0x7f010059;
+		public static final int documentView_reverse = 0x7f01004c;
+		public static final int documentView_text = 0x7f010053;
+		public static final int documentView_textAlignment = 0x7f01004f;
+		public static final int documentView_textColor = 0x7f010051;
+		public static final int documentView_textFormat = 0x7f010057;
+		public static final int documentView_textSize = 0x7f010050;
+		public static final int documentView_textStyle = 0x7f010056;
+		public static final int documentView_textSubPixel = 0x7f010054;
+		public static final int documentView_textTypefacePath = 0x7f010055;
+		public static final int documentView_wordSpacingMultiplier = 0x7f01004a;
 	}
 	public static final class id {
 		public static final int auto_quality = 0x7f0d0023;
@@ -52,7 +52,7 @@ public final class R {
 		public static final int underline = 0x7f0d0021;
 	}
 	public static final class styleable {
-		public static final int[] DocumentView = { 0x7f010041, 0x7f010042, 0x7f010043, 0x7f010044, 0x7f010045, 0x7f010046, 0x7f010047, 0x7f010048, 0x7f010049, 0x7f01004a, 0x7f01004b, 0x7f01004c, 0x7f01004d, 0x7f01004e, 0x7f01004f, 0x7f010050, 0x7f010051, 0x7f010052, 0x7f010053, 0x7f010054, 0x7f010055, 0x7f010056, 0x7f010057, 0x7f010058, 0x7f010059, 0x7f01005a };
+		public static final int[] DocumentView = { 0x7f010043, 0x7f010044, 0x7f010045, 0x7f010046, 0x7f010047, 0x7f010048, 0x7f010049, 0x7f01004a, 0x7f01004b, 0x7f01004c, 0x7f01004d, 0x7f01004e, 0x7f01004f, 0x7f010050, 0x7f010051, 0x7f010052, 0x7f010053, 0x7f010054, 0x7f010055, 0x7f010056, 0x7f010057, 0x7f010058, 0x7f010059, 0x7f01005a, 0x7f01005b, 0x7f01005c };
 		public static final int DocumentView_documentView_antialias = 15;
 		public static final int DocumentView_documentView_cacheConfig = 21;
 		public static final int DocumentView_documentView_disallowInterceptTouch = 25;

@@ -75,39 +75,15 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="170dp"
             android:id="@+id/img_noticia"
-            android:layout_weight="1"
             android:scaleType="fitXY"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:src="@mipmap/none"/>
-        <!--<com.bluejamesbond.text.DocumentView xmlns:ext="http://schemas.android.com/apk/res-auto"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--android:id="@+id/txt_n_noticia"-->
-            <!--android:selectAllOnFocus="true"-->
-            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-            <!--ext:documentView_antialias="true"-->
-            <!--ext:documentView_cacheConfig="auto_quality"-->
-            <!--ext:documentView_hyphen="-"-->
-            <!--ext:documentView_maxLines="100"-->
-            <!--ext:documentView_offsetX="5dp"-->
-            <!--ext:documentView_offsetY="5dp"-->
-            <!--ext:documentView_insetPadding="5dp"-->
-            <!--ext:documentView_insetPaddingBottom="5dp"-->
-            <!--ext:documentView_insetPaddingLeft="5dp"-->
-            <!--ext:documentView_insetPaddingRight="5dp"-->
-            <!--ext:documentView_insetPaddingTop="5dp"-->
-            <!--ext:documentView_reverse="false"-->
-            <!--ext:documentView_textAlignment="justified"-->
-            <!--ext:documentView_textColor="@android:color/black"-->
-            <!--ext:documentView_textFormat="plain"-->
-            <!--ext:documentView_textSize="16dp"-->
-            <!--ext:documentView_textSubPixel="true"-->
-            <!--ext:documentView_text="dfdsdfsd"-->
-             <!--/>-->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Medium Text"
             android:id="@+id/txt_n_noticia" />
@@ -120,14 +96,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Fuente del ítem de Noticia:"
+            android:text="Fuente del ítem de Noticia: "
             android:textColor="@color/lila"
             android:id="@+id/txt_fuente" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Fuente del ítem de Noticia:"
+            android:text="Fuente del ítem de Noticia: "
             android:textColor="@color/lila"
             android:id="@+id/txt_fuente_noticia" />
         </LinearLayout>

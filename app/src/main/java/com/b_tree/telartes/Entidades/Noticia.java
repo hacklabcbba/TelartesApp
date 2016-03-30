@@ -56,7 +56,7 @@ public class Noticia  implements Serializable{
             this.titulo = android.text.Html.fromHtml(jsonObject.getString("node_title")).toString();
             this.descripcion = jsonObject.getString("descripcion");
             this.categoria = jsonObject.getString("categoría");
-            this.fuente = jsonObject.getString("fuente del item de noticia");
+            this.fuente = android.text.Html.fromHtml(jsonObject.getString("fuente del item de noticia")).toString();
             this.imagen = (jsonObject.getString("imagen"));
             int start = imagen.indexOf("src=\"") + 5;
             int end = imagen.indexOf("\"", start);

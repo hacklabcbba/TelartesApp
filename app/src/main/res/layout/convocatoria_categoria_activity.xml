@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:background="@color/blanco">
 
-        <com.b_tree.telartes.CircleCheckBox
+        <com.b_tree.telartes.Utils.CircleCheckBox
             android:id="@+id/chbx"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -73,9 +73,8 @@
     <ListView
         android:background="@color/blanco"
         android:layout_width="match_parent"
-        android:layout_height="362dp"
-        android:id="@+id/list_filter"
-        android:layout_weight="1.26" />
+        android:layout_height="334dp"
+        android:id="@+id/list_filter" />
 
     <LinearLayout
         android:id="@+id/ver_convocatoria"

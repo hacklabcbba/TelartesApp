@@ -53,6 +53,7 @@ application
 ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:9:5-56:19
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.github.markushi:circlebutton:1.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.github.markushi/circlebutton/1.1/AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.gms:play-services:8.4.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/8.4.0/AndroidManifest.xml:19:5-20
 MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:24:5-32:19
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
@@ -278,9 +279,9 @@ ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:53:9-
 		ADDED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml:53:19-74
 uses-sdk
 INJECTED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:multidex:1.0.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:appcompat-v7:23.1.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.1.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.github.markushi:circlebutton:1.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.github.markushi/circlebutton/1.1/AndroidManifest.xml:7:5-44
 MERGED from [com.google.android.gms:play-services:8.4.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/8.4.0/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-ads:8.4.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/AndroidManifest.xml:23:5-42
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
@@ -417,7 +418,7 @@ MERGED from [com.android.support:support-v4:23.1.1] /home/noemi/martadero/telart
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:23.1.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:multidex:1.0.1] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:multidex:1.0.0] /home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.0/AndroidManifest.xml:18:5-42
 	android:targetSdkVersion
 		INJECTED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml
 		INJECTED from /home/noemi/martadero/telartes/app/src/main/AndroidManifest.xml

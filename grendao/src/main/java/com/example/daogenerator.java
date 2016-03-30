@@ -10,7 +10,9 @@ public class daogenerator {
         addAgendaCultural(schema);
         addNoticia(schema);
         addConvocatorias(schema);
-        new DaoGenerator().generateAll(schema, "/home/noemi/martadero/telartes/app/src/main/java/com/b_tree/telartes/Entidades");
+        addCategoria(schema);
+        addUpdate(schema);
+        new DaoGenerator().generateAll(schema, "/home/noemi/martadero/telartes/app/src/main/java/com/b_tree/telartes/Entidades/actualizacion");
     }
 
 
@@ -70,12 +72,22 @@ public class daogenerator {
         noticia.addStringProperty("autorEnlace");
         noticia.addStringProperty("autorNombre");
 
+
     }
 
-
-
-
-
+    private static void addCategoria(Schema schema){
+        Entity categoria = schema.addEntity("Categoria");
+        categoria.addIdProperty().autoincrement().primaryKey();
+        categoria.addStringProperty("Nombre").notNull();
+        categoria.addStringProperty("Vocabulario").notNull();
+    }
+    private static void addUpdate(Schema schema){
+        Entity actualizacion = schema.addEntity("Actualizacion");
+        actualizacion.addIdProperty().autoincrement().primaryKey();
+        actualizacion.addStringProperty("Nombre").notNull();
+        actualizacion.addStringProperty("Fecha").notNull();
+        actualizacion.addIntProperty("idActual").notNull();
+    }
 
 
 }

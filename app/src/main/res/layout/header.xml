@@ -6,7 +6,7 @@
     android:background="@color/blanco">
 
     <TextView
-        style="?android:attr/listSeparatorTextViewStyle"
+
         android:id="@+id/txt_header"
         android:text="Header"
         android:paddingLeft="30dp"

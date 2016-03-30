@@ -7,9 +7,7 @@ import android.os.Handler;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.principal.PrincipalActivity;
 
-/**
- * Created by Diana on 26/09/2015.
- */
+
 public class SplashActivity extends BaseTelartesActivity {
     @Override
     protected String getScreenLabel() {
