@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Noticia de ultimo momento"
+                android:text="Titulo evento"
                 android:id="@+id/txt_da_titulo"
                 android:maxLines="2"
                 android:textStyle="bold"
@@ -29,12 +29,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
+                android:text="Miercoles, Abril 20, 2016"
                 android:id="@+id/txt_da_fecha" />
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="170dp"
                 android:id="@+id/img_da_agenda"
                 android:layout_weight="1"
                 android:scaleType="fitXY"
@@ -43,42 +43,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Departamento:Cochabamba"
+                android:layout_marginTop="5dp"
+                android:text="Departamento: Cochabamba"
                 android:id="@+id/txt_da_departamento" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
+                android:text="Fecha del evento"
                 android:id="@+id/txt_da_fecha_evento" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Convocante:"
+                android:text="Convocante: "
                 android:id="@+id/txt_da_costo" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
+                android:text="Lugar"
                 android:id="@+id/txt_da_lugar" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
+                android:text="Contenido"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/txt_da_descripcion" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content">
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Enlace: "
                     android:id="@+id/txt_da_enlacetx" />

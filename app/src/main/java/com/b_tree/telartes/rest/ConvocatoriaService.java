@@ -37,7 +37,7 @@ public  abstract  class ConvocatoriaService  extends ClasesRest {
 
     @Override
     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-        Log.d("ERROR", bytes.toString());
+
     }
 
     public void obtenerConvocatorias() {

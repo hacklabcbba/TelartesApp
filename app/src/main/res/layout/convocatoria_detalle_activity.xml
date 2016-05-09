@@ -29,8 +29,9 @@
                 android:layout_gravity="center_horizontal" />
 
             <ImageView
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="170dp"
                 android:id="@+id/img_convocatoria"
                 android:layout_weight="1"
                 android:scaleType="fitXY"
@@ -38,6 +39,7 @@
                 android:src="@mipmap/none"/>
 
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -46,7 +48,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Fecha límite:"
+                    android:textStyle="bold"
+                    android:text="Fecha límite: "
                     android:id="@+id/textView3" />
 
                 <TextView
@@ -67,7 +70,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Convocante:"
+                    android:text="Convocante: "
+                    android:textStyle="bold"
                     android:id="@+id/textView4" />
 
                 <TextView
@@ -83,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
+                android:text="Contenido"
                 android:id="@+id/lbl_descripcion" />
 
 

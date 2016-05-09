@@ -28,7 +28,7 @@ public class ActualizacionDao extends AbstractDao<Actualizacion, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Nombre = new Property(1, String.class, "Nombre", false, "NOMBRE");
         public final static Property Fecha = new Property(2, String.class, "Fecha", false, "FECHA");
-        public final static Property IdActual = new Property(3, int.class, "idActual", false, "ID_ACTUAL");
+        public final static Property IdActual = new Property(3, Long.class, "idActual", false, "ID_ACTUAL");
     };
 
 
@@ -83,7 +83,7 @@ public class ActualizacionDao extends AbstractDao<Actualizacion, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getString(offset + 1), // Nombre
             cursor.getString(offset + 2), // Fecha
-            cursor.getInt(offset + 3) // idActual
+            cursor.getLong(offset + 3) // idActual
         );
         return entity;
     }
@@ -94,7 +94,7 @@ public class ActualizacionDao extends AbstractDao<Actualizacion, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setNombre(cursor.getString(offset + 1));
         entity.setFecha(cursor.getString(offset + 2));
-        entity.setIdActual(cursor.getInt(offset + 3));
+        entity.setIdActual(cursor.getLong(offset + 3));
      }
     
     /** @inheritdoc */

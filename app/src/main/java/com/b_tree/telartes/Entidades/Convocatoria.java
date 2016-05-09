@@ -1,6 +1,10 @@
  package com.b_tree.telartes.Entidades;
 
+ import android.graphics.Bitmap;
  import android.util.Log;
+
+ import com.b_tree.telartes.Utils.Utils;
+ import com.b_tree.telartes.rest.ImageDownloader;
 
  import org.json.JSONObject;
 
@@ -73,11 +77,12 @@
              int start = imagen.indexOf("src=\"") + 5;
              int end = imagen.indexOf("\"", start);
              String src = imagen.substring(start, end);
-             this.imagen=src;
+             String myBase64Image = Utils.encodeToBase64(new ImageDownloader().execute(src).get(), Bitmap.CompressFormat.JPEG, 100);
+             this.imagen=myBase64Image;
              this.areas= android.text.Html.fromHtml(jsonObject.getString("areas")).toString();
              this.campo = android.text.Html.fromHtml(jsonObject.getString("campos")).toString();
              this.convocante = android.text.Html.fromHtml(jsonObject.getString("convocante")).toString();
-             this.fechalimite = android.text.Html.fromHtml(jsonObject.getString("fecha limite")).toString();
+             this.fechalimite = android.text.Html.fromHtml(jsonObject.getString("plazo")).toString();
              this.lugar = android.text.Html.fromHtml(jsonObject.getString("ciudad")).toString();
              this.correo  = android.text.Html.fromHtml(jsonObject.getString("correo electrónico")).toString();
              this.nid = Integer.parseInt(jsonObject.getString("nid"));

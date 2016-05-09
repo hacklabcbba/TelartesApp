@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Telartes</string>
+    <string name="que_es"><u>¿Qué es esta App?</u></string>
+    <string name="facebook_app_id">1609864646007365</string>
 </resources>

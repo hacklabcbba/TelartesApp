@@ -18,7 +18,7 @@ public class RestClientJar {
 	private static AsyncHttpClient client = new AsyncHttpClient();
 
 	public static void setTimeOut() {
-		client.setTimeout(600000);
+		client.setTimeout(1000000);
 	}
 
 	public static void allowCircularRedirects() {

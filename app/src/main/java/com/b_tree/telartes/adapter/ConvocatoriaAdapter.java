@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.b_tree.telartes.Entidades.Convocatoria;
 import com.b_tree.telartes.R;
+import com.b_tree.telartes.Utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public class ConvocatoriaAdapter  extends ArrayAdapter<Convocatoria> {
         holder.txtTitulo.setText(item.getTitulo());
         holder.txtFecha.setText(item.getFechalimite());
         holder.txtDescripcion.setText(item.getDescripcion());
-        Picasso.with(getContext()).load(item.getImagen()).into(holder.imgConvocatoria);
+        holder.imgConvocatoria.setImageBitmap(Utils.decodeBase64(item.getImagen()));
         return convertView;
     }
 

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer"
+    android:layout_gravity="right"
+    android:orientation="vertical"
+    android:layout_width="200dp"
+    android:background="@color/blanco"
+    android:layout_height="match_parent">
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:padding="4dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/telartes_menu"
+                    android:layout_gravity="left"
+                    android:padding="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/negro"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="La agenda cultural boliviana hecha por la ciudadanía."
+                    android:id="@+id/textView14"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/que_es"
+                    android:paddingTop="3dp"
+                    android:textStyle="bold"
+
+                    android:id="@+id/textView15"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/negro"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Esta aplicación es una apuesta de TELARTES para accesibilizar la información cultural del país, por y para todxs."
+                    android:id="@+id/textView16"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="¿Cómo funciona?"
+                    android:textStyle="bold"
+                    android:padding="3dp"
+                    android:id="@+id/textView17"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Toda la información que ves aquí viene del sitio web:"
+                    android:textColor="@color/negro"
+                    android:id="@+id/textView19" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="www.telartes.org.bo"
+                    android:textColor="@color/rojo"
+                    android:padding="10dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/textView18"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Si te abres un perfil en ella, podrás subir tus eventos, noticias y convocatorias, y así se mostrarán abiertamente en esta aplicación."
+                    android:id="@+id/textView20"
+                    android:textColor="@color/negro"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:padding="3dp"
+                    android:text="¿Cómo la hemos hecho?"
+                    android:textStyle="bold"
+                    android:id="@+id/textView21" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/negro"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="De la mejor forma que sabemos: colaborativamente. Utilizando la antigua (y nueva) tecnología del trueque, hoy logramos contar con esta aplicación para beneficio de la ciudadanía."
+                    android:id="@+id/textView22" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/negro"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="El desarrollo de la App ha sido realizado por:"
+                    android:id="@+id/textView23" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="10dp"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="https://github.com/NoemiNahomy"
+                    android:textColor="@color/rojo"
+                    android:id="@+id/textView24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Con el apoyo de:"
+                    android:textColor="@color/negro"
+                    android:id="@+id/textView28" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/martadero"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView2"
+                    android:padding="10dp"
+                    android:src="@mipmap/hacklab"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text=" ¿Por qué la hemos creado?"
+                    android:textStyle="bold"
+                    android:id="@+id/textView27" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/negro"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Porque TELARTES apuesta firmemente por una cultura libre, abierta y viva en el desarrollo cultural de Bolivia.
+Abre una cuenta ahora en el sitio web y empieza a publicar:"
+                    android:id="@+id/textView25" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="www.telartes.org.bo"
+                    android:id="@+id/txt_url_telartes"
+                    android:textColor="@color/rojo"
+                    android:layout_gravity="center"
+                  />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/negro"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text=" ¡Súmate a las culturas conectadas en movimiento!"
+                    android:id="@+id/textView30"
+                    android:padding="5dp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+</LinearLayout>

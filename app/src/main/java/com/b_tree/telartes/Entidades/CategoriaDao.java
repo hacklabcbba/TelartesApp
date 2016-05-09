@@ -31,6 +31,7 @@ public class CategoriaDao extends AbstractDao<Categoria, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Nombre = new Property(1, String.class, "Nombre", false, "NOMBRE");
         public final static Property Vocabulario = new Property(2, String.class, "Vocabulario", false, "VOCABULARIO");
+        public final static Property Tipo = new Property(3, String.class, "Tipo", false, "TIPO");
     };
 
 
@@ -48,7 +49,7 @@ public class CategoriaDao extends AbstractDao<Categoria, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"CATEGORIA\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"NOMBRE\" TEXT NOT NULL ," + // 1: Nombre
-                "\"VOCABULARIO\" TEXT NOT NULL );"); // 2: Vocabulario
+                "\"VOCABULARIO\" TEXT NOT NULL, TIPO TEXT NOT NULL   );"); // 2: Vocabulario
     }
 
     /** Drops the underlying database table. */
@@ -68,6 +69,7 @@ public class CategoriaDao extends AbstractDao<Categoria, Long> {
         }
         stmt.bindString(2, entity.getNombre());
         stmt.bindString(3, entity.getVocabulario());
+        stmt.bindString(4, entity.getTipo());
     }
 
     /** @inheritdoc */
@@ -82,7 +84,8 @@ public class CategoriaDao extends AbstractDao<Categoria, Long> {
         Categoria entity = new Categoria( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getString(offset + 1), // Nombre
-            cursor.getString(offset + 2) // Vocabulario
+            cursor.getString(offset + 2), // Vocabulario
+            cursor.getString(offset + 3)
         );
         return entity;
     }
@@ -93,6 +96,7 @@ public class CategoriaDao extends AbstractDao<Categoria, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setNombre(cursor.getString(offset + 1));
         entity.setVocabulario(cursor.getString(offset + 2));
+        entity.setTipo(cursor.getString(offset + 3));
      }
     
     /** @inheritdoc */

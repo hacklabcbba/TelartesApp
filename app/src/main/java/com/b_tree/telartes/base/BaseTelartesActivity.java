@@ -1,7 +1,6 @@
 package com.b_tree.telartes.base;
 
 
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -11,8 +10,6 @@ import android.widget.TextView;
 
 ;import com.b_tree.telartes.Entidades.Actualizacion;
 import com.b_tree.telartes.Entidades.ActualizacionDao;
-import com.b_tree.telartes.Entidades.DaoSession;
-import com.b_tree.telartes.Global;
 import com.b_tree.telartes.R;
 
 import java.text.SimpleDateFormat;
@@ -78,6 +75,8 @@ public abstract class BaseTelartesActivity extends FragmentActivity{
         overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
     }
 
+
+
     @Override
     public void overridePendingTransition(int enterAnim, int exitAnim) {
         super.overridePendingTransition(enterAnim, exitAnim);
@@ -101,14 +100,14 @@ public abstract class BaseTelartesActivity extends FragmentActivity{
 
     private void iniciarActualizacion(){
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat dateformat = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss");
+        SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         String dateNow = dateformat.format(c.getTime());
         ActualizacionDao actualizacionDao =  Global.getMiglobal().getDaosession().getActualizacionDao();
         if (actualizacionDao.loadAll().isEmpty()){
-            actualizacionDao.insert(new Actualizacion( null,"Noticia",dateNow, 0));
-            actualizacionDao.insert(new Actualizacion( null,"Agenda",dateNow, 0));
-            actualizacionDao.insert(new Actualizacion( null,"Convocatoria",dateNow, 0));
-            actualizacionDao.insert(new Actualizacion( null,"Categoria",dateNow, 0));
+            actualizacionDao.insert(new Actualizacion( null,"Noticia",dateNow, new Long(0)));
+            actualizacionDao.insert(new Actualizacion( null,"Agenda",dateNow, new Long(0)));
+            actualizacionDao.insert(new Actualizacion( null,"Convocatoria",dateNow, new Long(0)));
+            actualizacionDao.insert(new Actualizacion( null,"Categoria",dateNow, new Long(0)));
         }
     }
 

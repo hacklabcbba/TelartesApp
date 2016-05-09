@@ -6,6 +6,8 @@ import android.os.Handler;
 
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.principal.PrincipalActivity;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 
 public class SplashActivity extends BaseTelartesActivity {
@@ -18,7 +20,8 @@ public class SplashActivity extends BaseTelartesActivity {
 
     @Override
     protected void inicializarVariables(Bundle savedInstanceState) {
-
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
     }
 
     @Override

@@ -1,10 +1,13 @@
 package com.b_tree.telartes.principal;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +18,21 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 
+import com.b_tree.telartes.Entidades.Actualizacion;
+import com.b_tree.telartes.Entidades.ActualizacionDao;
 import com.b_tree.telartes.Entidades.Convocatoria;
-import com.b_tree.telartes.Global;
+import com.b_tree.telartes.Utils.Utils;
+import com.b_tree.telartes.adapter.NoticiaAdapter;
+import com.b_tree.telartes.base.Global;
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.adapter.ConvocatoriaAdapter;
 import com.b_tree.telartes.base.BaseTelartesActivity;
+import com.b_tree.telartes.listeners.ConvocatoriaListener;
 import com.b_tree.telartes.rest.ConvocatoriaService;
+import com.b_tree.telartes.rest.NuevaConvocatoriaService;
+import com.b_tree.telartes.rest.RestClientJar;
+
+import org.apache.http.Header;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,15 +40,21 @@ import java.util.List;
 /**
  * Created by noemi on 22-02-16.
  */
-public class ConvocatoriaActivity extends BaseTelartesActivity {
+public class ConvocatoriaActivity extends BaseTelartesActivity implements ConvocatoriaListener {
 
     private ListView lvConvocatoria;
     private ConvocatoriaAdapter convocatoriaAdapter;
     private ConvocatoriaService convocatoriaService;
     private List<Convocatoria> convocatoriaList;
     private ImageView menu_filter;
-    private ImageView menuSetting;
-    private  Point p;
+
+    private ImageView menuInfo;
+    private  DrawerLayout drawerLayout;
+    private static final String LIST_FRAGMENT_TAG = "ConvocatoriaFiltroFragment";
+    private  List<Actualizacion> actualizarConvocatoria;
+    private long  valornid;
+    private NuevaConvocatoriaService nuevaConvocatoria;
+    private ActualizacionDao actualizacionDao;
     @Override
     protected String getScreenLabel() {
         return "CONVOCATORIAS";
@@ -46,64 +64,90 @@ public class ConvocatoriaActivity extends BaseTelartesActivity {
     protected void inicializarVariables(Bundle savedInstanceState) {
         convocatoriaList = new ArrayList<>();
         lvConvocatoria = (ListView) findViewById(R.id.lv_convocatoria);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         menu_filter = (ImageView)findViewById(R.id.image_menu);
-        menuSetting = (ImageView)findViewById(R.id.menu_setting);
-        menuSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (p != null)
-                    showPopup(ConvocatoriaActivity.this, p);
-            }
-        });
+        menuInfo = (ImageView)findViewById(R.id.menu_info);
         menu_filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mostrarCategorias();
 
-                Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaCategoriaActivity.class);
-                startActivity(i);
             }
         });
-       // convocatoriaList = Global.getMiglobal().getDaosession().getConvocatoriaDao().loadAll();
-       // if (convocatoriaList.isEmpty()){
+        actualizacionDao = Global.getMiglobal().getDaosession().getActualizacionDao();
+        menuInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+                    drawerLayout.closeDrawer(Gravity.RIGHT);
+                } else {
+                    drawerLayout.openDrawer(Gravity.RIGHT);
+                }
+            }
+        });
+         verConvocatorias();
+    }
+    private void  verConvocatorias (){
+        if (RestClientJar.getInternetState(this)) {
+            actualizarConvocatoria = new ArrayList<>();
+            actualizarConvocatoria = (actualizacionDao.queryBuilder().where(ActualizacionDao.Properties.Nombre.eq("Convocatoria"))).list();
+            final Long idConvocatoriaActual = actualizarConvocatoria.get(0).getIdActual();
+            if (idConvocatoriaActual == 0){
+                actualizarConvocatoria();
+            }else{
+                nuevaConvocatoria = new NuevaConvocatoriaService(this) {
+                    @Override
+                    public void onSuccessObtenerNuevaConvocatoria(Long nid) {
+                        valornid= nid;
+                    }
 
+                    @Override
+                    public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                        obtenerConvocatoriaBD();
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        if (valornid > idConvocatoriaActual) {
+                            actualizarConvocatoria();
+                            actualizacionDao.deleteByKey(actualizarConvocatoria.get(0).getId());
+                            actualizacionDao.insertOrReplace(new Actualizacion(null, "Convocatoria", Utils.getFechaActual(), valornid));
+                        }else{
+                            obtenerConvocatoriaBD();
+                        }
+                    }
+                };
+                nuevaConvocatoria.ObtenerNuevasConvocatorias();
+            }
+
+        }else{
+            obtenerConvocatoriaBD();
+        }
+
+    }
+
+    private void actualizarConvocatoria() {
             convocatoriaService = new ConvocatoriaService(this) {
                 @Override
                 public void onSuccessObtenerConvocatoria(List<Convocatoria> convocatorialist) {
-                    convocatoriaList = convocatorialist;
+                    Global.getMiglobal().getDaosession().getConvocatoriaDao().deleteAll();
                     Global.getMiglobal().getDaosession().getConvocatoriaDao().insertInTx(convocatorialist);
-                    convocatoriaAdapter = new ConvocatoriaAdapter(getBaseContext(), convocatoriaList);
+                }
+
+                @Override
+                public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                    super.onFailure(i, headers, bytes, throwable);
+                    obtenerConvocatoriaBD();
                 }
 
                 @Override
                 public void onFinish() {
-
-                    lvConvocatoria.setAdapter(convocatoriaAdapter);
-                    lvConvocatoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaDetalleActivity.class);
-                            i.putExtra("convocatoria", convocatoriaList.get(position));
-                            startActivity(i);
-                        }
-                    });
-
+                   obtenerConvocatoriaBD();
                 }
             };
             convocatoriaService.obtenerConvocatorias();
-
-//        }else{
-//            convocatoriaAdapter = new ConvocatoriaAdapter(getBaseContext(), convocatoriaList);
-//            lvConvocatoria.setAdapter(convocatoriaAdapter);
-//            lvConvocatoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaDetalleActivity.class);
-//                    i.putExtra("convocatoria", convocatoriaList.get(position));
-//                    startActivity(i);
-//                }
-//            });
-       // }
-
     }
 
     @Override
@@ -113,70 +157,47 @@ public class ConvocatoriaActivity extends BaseTelartesActivity {
 
     @Override
     protected void instaciarAsignarIGU(Bundle savedInstanceState) {
-        lvConvocatoria = (ListView) findViewById(R.id.lv_convocatoria);
-        lvConvocatoria.setAdapter(convocatoriaAdapter);
-        lvConvocatoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaDetalleActivity.class);
-                i.putExtra("convocatoria", convocatoriaList.get(position));
-                startActivity(i);
-            }
-        });
+
+
+    }
+
+    @SuppressLint("NewApi")
+    private void mostrarCategorias() {
+        Fragment f = getFragmentManager().findFragmentByTag(LIST_FRAGMENT_TAG);
+        if (f != null) {
+            getFragmentManager().popBackStack();
+        } else {
+            getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_up,R.anim.slide_down)
+                    .add(R.id.list_fragment_container, ConvocatoriaFiltroFragment
+                                    .instantiate(this, ConvocatoriaFiltroFragment.class.getName()),
+                            LIST_FRAGMENT_TAG
+                    ).addToBackStack(null).commit();
+        }
 
     }
     @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
+    public void filtroConvocatoria(ArrayList<String> listfiltro) {
 
-        int[] location = new int[2];
-        ImageView button = (ImageView) findViewById(R.id.menu_setting);
-
-        // Get the x, y location and store it in the location[] array
-        // location[0] = x, location[1] = y.
-        button.getLocationOnScreen(location);
-
-        //Initialize the Point with x, and y positions
-        p = new Point();
-        p.x = location[0];
-        p.y = location[1];
     }
 
-    // The method that displays the popup.
-    private void showPopup(final Activity context, Point p) {
-        int popupWidth = 600;
-        int popupHeight = 900;
-
-        // Inflate the popup_layout.xml
-        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.menu_pop);
-        LayoutInflater layoutInflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = layoutInflater.inflate(R.layout.menu, viewGroup);
-
-        // Creating the PopupWindow
-        final PopupWindow popup = new PopupWindow(context);
-        popup.setContentView(layout);
-        popup.setWidth(popupWidth);
-        popup.setHeight(popupHeight);
-        popup.setFocusable(true);
-
-        // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
-        int OFFSET_X = 110;
-        int OFFSET_Y = 110;
-
-        // Clear the default translucent background
-        //popup.setBackgroundDrawable(new BitmapDrawable());
-
-        // Displaying the popup at the specified location, + offsets.
-        popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
-
-        // Getting a reference to Close button, and close the popup when clicked.
-        Button close = (Button) layout.findViewById(R.id.btn_menu_close);
-        close.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                popup.dismiss();
-            }
-        });
+    public void obtenerConvocatoriaBD(){
+        convocatoriaList = Global.getMiglobal().getDaosession().getConvocatoriaDao().loadAll();
+        if(!convocatoriaList.isEmpty()){
+            convocatoriaAdapter = new ConvocatoriaAdapter(getBaseContext(), convocatoriaList);
+            lvConvocatoria.setAdapter(convocatoriaAdapter);
+            lvConvocatoria.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent i = new Intent(ConvocatoriaActivity.this, ConvocatoriaDetalleActivity.class);
+                    i.putExtra("convocatoria", convocatoriaList.get(position));
+                    startActivity(i);
+                }
+            });
+        }else{
+            LinearLayout listContent = (LinearLayout)findViewById(R.id.content_list);
+            listContent.removeAllViews();
+            View v = this.getLayoutInflater().inflate(R.layout.error_conection_noticias, null);
+            listContent.addView(v);
+        }
     }
 }

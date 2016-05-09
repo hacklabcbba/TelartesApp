@@ -1,28 +1,20 @@
 package com.b_tree.telartes.principal;
 
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.view.Display;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 
 import com.b_tree.telartes.R;
 import com.b_tree.telartes.base.BaseTelartesActivity;
-
-import org.w3c.dom.Text;
 
 
 public class PrincipalActivity extends BaseTelartesActivity  {
@@ -37,7 +29,7 @@ public class PrincipalActivity extends BaseTelartesActivity  {
 	private ImageView imgConvocatoria;
 	private ImageView imgConfiguracion;
 	private ImageView imgInformacion;
-
+	private  DrawerLayout drawerLayout;
 	private Point p;
 	@Override
 	protected void inicializarVariables(Bundle savedInstanceState) {
@@ -45,11 +37,13 @@ public class PrincipalActivity extends BaseTelartesActivity  {
 
 	@Override
 	protected int getResLayout() {
-		return R.layout.acivity_principal;
+		return R.layout.activity_principal;
 	}
 
 	@Override
 	protected void instaciarAsignarIGU(Bundle savedInstanceState) {
+		drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+		drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 		btnNoticias = (LinearLayout) findViewById(R.id.btn_noticias);
 		btnAgenda = (LinearLayout) findViewById(R.id.btn_agenda);
 		btnConvocatorias = (LinearLayout) findViewById(R.id.btn_convocatoria);
@@ -59,8 +53,18 @@ public class PrincipalActivity extends BaseTelartesActivity  {
 		imgNoticias = (ImageView)findViewById(R.id.img_noticias);
 		imgAgenda = (ImageView)findViewById(R.id.img_agenda);
 		imgConvocatoria = (ImageView)findViewById(R.id.img_convocatoria);
-		imgConfiguracion = (ImageView)findViewById(R.id.img_configuracion);
 		imgInformacion = (ImageView)findViewById(R.id.img_informacion);
+		final TextView urlTelartes = (TextView)findViewById(R.id.txt_url_telartes);
+		urlTelartes.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View view, MotionEvent motionEvent) {
+
+				return false;
+				
+
+			}
+
+			});
 		btnNoticias.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View view, MotionEvent event) {
@@ -116,51 +120,14 @@ public class PrincipalActivity extends BaseTelartesActivity  {
 				return true;
 			}
 		});
-		imgConfiguracion.setOnTouchListener(new View.OnTouchListener() {
-			@Override
-			public boolean onTouch(View view, MotionEvent event) {
-				switch (event.getAction()) {
-					case MotionEvent.ACTION_DOWN:
 
-						imgConfiguracion.setBackgroundColor(getResources().getColor(R.color.plomo));
-						imgConfiguracion.setImageDrawable(getResources().getDrawable(R.mipmap.tuerca_hover));
-						int[] location = new int[2];
-						imgConfiguracion.getLocationOnScreen(location);
-						p = new Point();
-						p.x = location[0];
-						p.y = location[1];
-						if (p != null) {
-							showPopupConfiguracion(PrincipalActivity.this, p);
-						}
-						break;
-					case MotionEvent.ACTION_UP:
-						imgConfiguracion.setBackgroundColor(getResources().getColor(R.color.blanco));
-						imgConfiguracion.setImageDrawable(getResources().getDrawable(R.mipmap.tuerca));
-
-				}
-				return true;
-			}
-		});
 		imgInformacion.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View view, MotionEvent event) {
-				switch (event.getAction()) {
-					case MotionEvent.ACTION_DOWN:
-						imgInformacion.setBackgroundColor(getResources().getColor(R.color.plomo));
-						imgInformacion.setImageDrawable(getResources().getDrawable(R.mipmap.info_hover));
-						int[] location = new int[2];
-						imgInformacion.getLocationOnScreen(location);
-						p = new Point();
-						p.x = location[0];
-						p.y = location[1];
-						if (p != null) {
-							showPopupInformacion(PrincipalActivity.this, p);
-						}
-						break;
-					case MotionEvent.ACTION_UP:
-						imgInformacion.setBackgroundColor(getResources().getColor(R.color.blanco));
-						imgInformacion.setImageDrawable(getResources().getDrawable(R.mipmap.info));
-
+				if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+					drawerLayout.closeDrawer(Gravity.RIGHT);
+				} else {
+					drawerLayout.openDrawer(Gravity.RIGHT);
 				}
 				return true;
 			}
@@ -183,6 +150,7 @@ public class PrincipalActivity extends BaseTelartesActivity  {
 	protected void onResume() {
 		super.onResume();
 
+
 	}
 
 	@Override
@@ -191,61 +159,5 @@ public class PrincipalActivity extends BaseTelartesActivity  {
 
 	}
 
-	private void showPopupConfiguracion(final Activity context, Point p) {
-		int popupWidth = 600;
-		Display display = getWindowManager().getDefaultDisplay();
-		int popupHeight = display.getHeight();
-		LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.menu_configuracion);
-		LayoutInflater layoutInflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View layout = layoutInflater.inflate(R.layout.configuracion_telartes, viewGroup);
-		final PopupWindow popup = new PopupWindow(context);
-		popup.setContentView(layout);
-		popup.setWidth(popupWidth);
-		popup.setHeight(popupHeight);
-		popup.setFocusable(true);
-		int OFFSET_X = 110;
-		int OFFSET_Y = 110;
-		popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
-
-//		// Getting a reference to Close button, and close the popup when clicked.
-//		Button close = (Button) layout.findViewById(R.id.btn_menu_close);
-//		close.setOnClickListener(new View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				popup.dismiss();
-//			}
-//		});
-	}
-	private void showPopupInformacion(final Activity context, Point p) {
-		int popupWidth = 600;
-		Display display = getWindowManager().getDefaultDisplay();
-		int popupHeight = display.getHeight();
-
-		// Inflate the popup_layout.xml
-		LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.menu_informacion);
-		LayoutInflater layoutInflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View layout = layoutInflater.inflate(R.layout.informacion_telartes, viewGroup);
-		final PopupWindow popup = new PopupWindow(context);
-		popup.setContentView(layout);
-		popup.setWidth(popupWidth);
-		popup.setHeight(popupHeight);
-		popup.setFocusable(true);
-		int OFFSET_X = 110;
-		int OFFSET_Y = 110;
-		popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
-
-//		// Getting a reference to Close button, and close the popup when clicked.
-//		Button close = (Button) layout.findViewById(R.id.btn_menu_close);
-//		close.setOnClickListener(new View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				popup.dismiss();
-//			}
-//		});
-	}
 
 }

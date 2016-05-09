@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.b_tree.telartes.Entidades.Convocatoria;
 import com.b_tree.telartes.R;
+import com.b_tree.telartes.Utils.Utils;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.bluejamesbond.text.DocumentView;
 import com.squareup.picasso.Picasso;
@@ -39,6 +40,10 @@ public class ConvocatoriaDetalleActivity  extends BaseTelartesActivity {
         lbl_descripcion = (TextView)findViewById(R.id.lbl_descripcion);
         imgConvocatoria = (ImageView)findViewById(R.id.img_convocatoria);
         imgShare = (ImageView)findViewById(R.id.img_share);
+
+        Intent i = getIntent();
+        this.convocatoria = (Convocatoria)i.getSerializableExtra("convocatoria");
+
         imgShare.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View view, MotionEvent event) {
                 switch (event.getAction()) {
@@ -47,7 +52,7 @@ public class ConvocatoriaDetalleActivity  extends BaseTelartesActivity {
                         imgShare.setImageDrawable(getResources().getDrawable(R.mipmap.compartir_hover));
                         Intent sendIntent = new Intent();
                         sendIntent.setAction(Intent.ACTION_SEND);
-                        sendIntent.putExtra(Intent.EXTRA_TEXT, "Este texto se enviara.");
+                        sendIntent.putExtra(Intent.EXTRA_TEXT, "Telartes:"+" "+ convocatoria.getTitulo());
                         sendIntent.setType("text/plain");
                         startActivity(sendIntent);
                         break;
@@ -59,8 +64,6 @@ public class ConvocatoriaDetalleActivity  extends BaseTelartesActivity {
                 return true;
             }
         });
-        Intent i = getIntent();
-        this.convocatoria = (Convocatoria)i.getSerializableExtra("convocatoria");
     }
 
     @Override
@@ -76,7 +79,7 @@ public class ConvocatoriaDetalleActivity  extends BaseTelartesActivity {
             lbl_fecha.setText(convocatoria.getFechalimite());
             lbl_fuente.setText(convocatoria.getConvocante());
             lbl_descripcion.setText(Html.fromHtml(convocatoria.getDescripcion()));
-            Picasso.with(getBaseContext()).load(convocatoria.getImagen()).into(imgConvocatoria);
+            imgConvocatoria.setImageBitmap(Utils.decodeBase64(convocatoria.getImagen()));
         }
 
     }

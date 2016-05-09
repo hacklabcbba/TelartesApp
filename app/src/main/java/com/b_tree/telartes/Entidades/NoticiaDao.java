@@ -56,7 +56,7 @@ public class NoticiaDao extends AbstractDao<Noticia, Long> {
                 "\"DESCRIPCION\" TEXT," + // 3: descripcion
                 "\"CATEGORIA\" TEXT," + // 4: categoria
                 "\"FUENTE\" TEXT," + // 5: fuente
-                "\"IMAGEN\" TEXT," + // 6: imagen
+                "\"IMAGEN\" BLOB," + // 6: imagen
                 "\"FECHA\" TEXT," + // 7: fecha
                 "\"ENVIADO_POR\" TEXT," + // 8: enviado_por
                 "\"AUTOR_ENLACE\" TEXT," + // 9: autorEnlace

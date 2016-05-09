@@ -1,15 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blanco">
-    <include
-        layout="@layout/view_header_filter"/>
-    <ListView
-        android:background="@color/blanco"
-        android:id="@+id/lv_agenda"
+    tools:context="com.b_tree.telartes.principal.AgendaActivity">
+    <FrameLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        ></ListView>
-
-</LinearLayout>
+        android:layout_height="match_parent" >
+        <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/content_main"
+            android:background="@color/blanco"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include
+                layout="@layout/view_header_filter"
+                android:id="@+id/include" />
+            <LinearLayout
+                android:id="@+id/content_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/blanco"
+                android:layout_alignTop="@+id/list_fragment_container">
+                <ListView
+                    android:id="@+id/lv_agenda"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@+id/list_fragment_container"></ListView>
+            </LinearLayout>
+            <FrameLayout
+                android:id="@+id/list_fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/include" />
+        </RelativeLayout>
+    </FrameLayout>
+    <include layout="@layout/info"
+        android:id="@+id/include">
+    </include>
+</android.support.v4.widget.DrawerLayout>

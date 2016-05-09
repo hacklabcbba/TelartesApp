@@ -34,18 +34,15 @@ public abstract class NuevaNoticiaService  extends ClasesRest {
         return "nuevanoticiarest";
     }
 
-
-
     @Override
     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-        Log.d("ERROR", bytes.toString());
+
     }
 
     public void ObtenerNuevaNoticias() {
 
         callToPostWithutParameterMetods(this);
     }
-
 
     @Override
     public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -58,8 +55,6 @@ public abstract class NuevaNoticiaService  extends ClasesRest {
             Log.d("error  nuevas noticias", e.getMessage());
         }
     }
-
-
 
     @Override
     protected void onErrorLogico(String error) {

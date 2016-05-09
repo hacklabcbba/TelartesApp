@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.b_tree.telartes.Entidades.AgendaCultural;
 import com.b_tree.telartes.R;
+import com.b_tree.telartes.Utils.Utils;
 import com.b_tree.telartes.base.BaseTelartesActivity;
 import com.bluejamesbond.text.DocumentView;
 import com.squareup.picasso.Picasso;
@@ -30,6 +31,7 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
     private TextView txtCosto;
     private TextView txtLugar;
     private ImageView imgShare;
+    private ImageView imgInfo;
     private AgendaCultural agenda;
     @Override
     protected String getScreenLabel() {
@@ -48,6 +50,16 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
         txtCosto = (TextView)findViewById(R.id.txt_da_costo);
         txtLugar = (TextView)findViewById(R.id.txt_da_lugar);
         imgShare = (ImageView)findViewById(R.id.img_share);
+        imgInfo = (ImageView)findViewById(R.id.menu_info);
+        imgInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        Intent i = getIntent();
+        this.agenda = (AgendaCultural)i.getSerializableExtra("agenda");
         imgShare.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View view, MotionEvent event) {
                 switch (event.getAction()) {
@@ -56,7 +68,7 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
                         imgShare.setImageDrawable(getResources().getDrawable(R.mipmap.compartir_hover));
                         Intent sendIntent = new Intent();
                         sendIntent.setAction(Intent.ACTION_SEND);
-                        sendIntent.putExtra(Intent.EXTRA_TEXT, "Este texto se enviara.");
+                        sendIntent.putExtra(Intent.EXTRA_TEXT, "Telartes: " + agenda.getTitulo());
                         sendIntent.setType("text/plain");
                         startActivity(sendIntent);
                         break;
@@ -68,8 +80,6 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
                 return true;
             }
         });
-        Intent i = getIntent();
-        this.agenda = (AgendaCultural)i.getSerializableExtra("agenda");
     }
 
     @Override
@@ -85,10 +95,15 @@ public class AgendaDetalleActivity  extends BaseTelartesActivity {
             txtDescripcion.setText(Html.fromHtml(agenda.getDescripcion()));
             txtDepartamento.setText("Departamento: "+agenda.getDepartamento());
             txtFechaEvento.setText("Fecha: " + "De " + agenda.getFechainicio() + " hasta " + agenda.getFechafin());
-            txtCosto.setText("Costo: " + agenda.getCosto());
+            if(!agenda.getCosto().equals("null")){
+                txtCosto.setText("Costo: " + agenda.getCosto());
+            }else{
+                txtCosto.setText("Costo: " + "Ingreso libre");
+            }
+
             txtLugar.setText("Lugar/Direccion: " + agenda.getLugar_direccion());
-            Picasso.with(getBaseContext()).load(agenda.getImagen()).into(imgAgenda);
-            if (!agenda.getEnlace().isEmpty()){
+            imgAgenda.setImageBitmap(Utils.decodeBase64(agenda.getImagen()));
+            if (!agenda.getEnlace().isEmpty() && !(agenda.getEnlace().equals("null"))){
                 ((TextView)findViewById(R.id.txt_da_enlacetx)).setVisibility(View.INVISIBLE);
                 txtEnlace.setText(Html.fromHtml(agenda.getEnlace()));
                 txtEnlace.setClickable(true);

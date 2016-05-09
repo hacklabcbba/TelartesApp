@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.b_tree.telartes.Entidades.AgendaCultural;
 import com.b_tree.telartes.R;
+import com.b_tree.telartes.Utils.Utils;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 /**
@@ -49,7 +50,7 @@ public class AgendaAdapter  extends ArrayAdapter<AgendaCultural> {
         holder.txttitulo.setText(item.getTitulo());
         holder.txtFecha.setText("De "+item.getFechainicio() + " hasta " +item.getFechafin() );
         holder.txtDescripcion.setText(Html.fromHtml(item.getDescripcion()));
-        Picasso.with(getContext()).load(item.getImagen()).into(holder.imgAgenda);
+        holder.imgAgenda.setImageBitmap(Utils.decodeBase64(item.getImagen()));
         holder.txtLugar.setText(item.getDepartamento());
         return convertView;
     }

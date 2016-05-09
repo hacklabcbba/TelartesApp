@@ -13,7 +13,7 @@ public class Actualizacion {
     private String Nombre;
     /** Not-null value. */
     private String Fecha;
-    private int idActual;
+    private Long idActual;
 
     public Actualizacion() {
     }
@@ -22,7 +22,7 @@ public class Actualizacion {
         this.id = id;
     }
 
-    public Actualizacion(Long id, String Nombre, String Fecha, int idActual) {
+    public Actualizacion(Long id, String Nombre, String Fecha, Long idActual) {
         this.id = id;
         this.Nombre = Nombre;
         this.Fecha = Fecha;
@@ -57,11 +57,11 @@ public class Actualizacion {
         this.Fecha = Fecha;
     }
 
-    public int getIdActual() {
+    public Long getIdActual() {
         return idActual;
     }
 
-    public void setIdActual(int idActual) {
+    public void setIdActual(Long idActual) {
         this.idActual = idActual;
     }
 

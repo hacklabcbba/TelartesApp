@@ -1,0 +1,155 @@
+package com.b_tree.telartes.principal;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.b_tree.telartes.Utils.CircleCheckBox;
+import com.b_tree.telartes.Entidades.ActualizacionDao;
+import com.b_tree.telartes.Entidades.Categoria;
+import com.b_tree.telartes.base.Global;
+import com.b_tree.telartes.R;
+import com.b_tree.telartes.adapter.EntryAdapter;
+import com.b_tree.telartes.adapter.EntryItem;
+import com.b_tree.telartes.adapter.Item;
+import com.b_tree.telartes.adapter.SectionItem;
+import com.b_tree.telartes.listeners.AgendaListener;
+import com.b_tree.telartes.listeners.ConvocatoriaListener;
+import com.b_tree.telartes.listeners.NoticiaListener;
+import com.b_tree.telartes.rest.AgendaCategoriaService;
+import com.b_tree.telartes.rest.ConvocatoriaCategoriaService;
+import com.b_tree.telartes.rest.NoticasCategoriaService;
+import com.b_tree.telartes.rest.RestClientJar;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class ConvocatoriaFiltroFragment extends Fragment {
+    Context context= null;
+    private ListView listFilter;
+    private LinearLayout btnVerConvocatoria;
+    private LinearLayout verNoticias;
+    private ActualizacionDao actualizacionDao;
+    private ConvocatoriaCategoriaService NCategoriaService;
+    private  List<Categoria> categoriaArrayList;
+    private ArrayList<Item> arrayListItem;
+    private ArrayList<String> arraySeleccion;
+    private  EntryAdapter adapter;
+    private CircleCheckBox checkTodas;
+    private ConvocatoriaListener listener;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.sliding_fragment_layout_convocatoria
+                , container, false);
+
+    }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        listFilter = (ListView)view.findViewById(R.id.list_filter);
+        btnVerConvocatoria = (LinearLayout)view.findViewById(R.id.ver_convocatorias);
+        arrayListItem = new ArrayList<>();
+        arraySeleccion = new ArrayList<>();
+        categoriaArrayList = new ArrayList<>();
+        final ArrayList<String> arrayList = new ArrayList<>();
+        if (RestClientJar.getInternetState(getActivity().getApplicationContext())) {
+            NCategoriaService = new ConvocatoriaCategoriaService(getActivity().getApplicationContext()) {
+                @Override
+                public void onSuccessObtenerCategoriaNoticia(List<Categoria> listaCategorias, JSONArray categoriaList) throws JSONException {
+                    categoriaArrayList = listaCategorias;
+                    Global.getMiglobal().getDaosession().getCategoriaDao().deleteAll();
+                    Global.getMiglobal().getDaosession().getCategoriaDao().insertOrReplaceInTx(listaCategorias);
+                    arrayListItem.add(new EntryItem("Todas"));
+                    String categoria = "";
+                    for (int i = 0; i < categoriaList.length(); i++) {
+                        JSONObject object = categoriaList.getJSONObject(i);
+                        if (!categoria.equals(object.getString("categoria"))) {
+                            categoria = object.getString("categoria");
+                            arrayListItem.add(new SectionItem(categoria));
+                            arrayListItem.add(new EntryItem(android.text.Html.fromHtml(object.getString("vocabulario")).toString()));
+                        } else {
+                            arrayListItem.add(new EntryItem(android.text.Html.fromHtml(object.getString("vocabulario")).toString()));
+                        }
+                    }
+                }
+
+                @Override
+                public void onFinish() {
+                    EntryAdapter adapter = new EntryAdapter(getActivity().getApplicationContext(), arrayListItem, "Convocatoria");
+                    listFilter.setAdapter(adapter);
+                    arraySeleccion = adapter.getListSeleccion();
+                }
+            };
+            NCategoriaService.obtenerCategoria();
+        }
+        else{
+            categoriaArrayList=  Global.getMiglobal().getDaosession().getCategoriaDao().loadAll();
+            String categoria = "";
+            arrayListItem.add(new EntryItem("Todas"));
+            if (categoriaArrayList != null) {
+                for (int i = 0; i < categoriaArrayList.size(); i++) {
+                    if (!categoria.equals(categoriaArrayList.get(i).getNombre())) {
+                        categoria = categoriaArrayList.get(i).getNombre();
+                        arrayListItem.add(new SectionItem(categoriaArrayList.get(i).getNombre()));
+                        arrayListItem.add(new EntryItem(categoriaArrayList.get(i).getVocabulario()));
+                    } else {
+                        arrayListItem.add(new EntryItem(categoriaArrayList.get(i).getVocabulario()));
+                    }
+                }
+                adapter = new EntryAdapter(getActivity().getApplicationContext(), arrayListItem, "Convocatoria");
+                listFilter.setAdapter(adapter);
+            }else{
+                //error
+            }
+
+        }
+
+        btnVerConvocatoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getActivity().getFragmentManager().popBackStack();
+
+//                arraySeleccion = adapter.getListSeleccion();
+//                if(!arraySeleccion.isEmpty()) {
+//                    listener.filtroConvocatoria(arraySeleccion);
+//
+//
+//                }else{
+//                    getActivity().getFragmentManager().popBackStack();
+//                }
+            }
+        });
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        View headerView = ((LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.header_listview, null, false);
+        listFilter.addHeaderView(headerView);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof AgendaListener) {
+            listener = (ConvocatoriaListener) activity;
+        }
+    }
+
+
+}

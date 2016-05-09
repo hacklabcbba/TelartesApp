@@ -19,26 +19,30 @@ public class Categoria {
     /** Not-null value. */
     private String Vocabulario;
 
+    private String Tipo;
+
     public Categoria() {
     }
 
     public Categoria(Long id) {
         this.id = id;
     }
-    public Categoria(JSONObject jsonObject){
+    public Categoria(JSONObject jsonObject, String tipo){
         try {
             this.Nombre = android.text.Html.fromHtml(jsonObject.getString("categoria")).toString();
             this.Vocabulario =  android.text.Html.fromHtml(jsonObject.getString("vocabulario")).toString();
+            this.Tipo = tipo;
 
         }catch (Exception e){
             Log.d("Error json", e.getMessage());
         }
     }
 
-    public Categoria(Long id, String Nombre, String Vocabulario) {
+    public Categoria(Long id, String Nombre, String Vocabulario, String Tipo) {
         this.id = id;
         this.Nombre = Nombre;
         this.Vocabulario = Vocabulario;
+        this.Tipo =  Tipo;
     }
 
     public Long getId() {
@@ -69,4 +73,12 @@ public class Categoria {
         this.Vocabulario = Vocabulario;
     }
 
+
+    public String getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(String tipo) {
+        Tipo = tipo;
+    }
 }

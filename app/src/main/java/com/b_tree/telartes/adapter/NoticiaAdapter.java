@@ -1,6 +1,7 @@
 package com.b_tree.telartes.adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.b_tree.telartes.Entidades.Noticia;
 import com.b_tree.telartes.R;
+import com.b_tree.telartes.Utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -46,10 +48,9 @@ public class NoticiaAdapter extends ArrayAdapter<Noticia> {
 
         Noticia item = getItem(position);
         holder.lblNombre.setText(item.getTitulo());
-        holder.lblDescripcion.setText(item.getDescripcion());
+        holder.lblDescripcion.setText(Html.fromHtml(item.getDescripcion()));
         holder.lblFecha.setText(item.getFecha());
-        Picasso.with(getContext()).load(item.getImagen()).into(holder.img_noticias);
-
+        holder.img_noticias.setImageBitmap(Utils.decodeBase64(item.getImagen()));
         return convertView;
     }
 

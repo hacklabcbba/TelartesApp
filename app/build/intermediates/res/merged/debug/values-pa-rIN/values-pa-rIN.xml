@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-pa-rIN/values-pa-rIN.xml -->
+    <!-- From: file:/home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0-alpha2/res/values-pa-rIN/values-pa-rIN.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"ਹੋਮ ਨੈਵੀਗੇਟ ਕਰੋ"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
@@ -73,7 +73,7 @@
     <eat-comment/>
     <string msgid="2132213647576279742" name="place_autocomplete_clear_button">"ਖੋਜ ਹਟਾਓ"</string>
     <string msgid="4600782048316473865" name="place_autocomplete_search_hint">"ਖੋਜੋ"</string>
-    <!-- From: file:/home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-pa-rIN/values-pa-rIN.xml -->
+    <!-- From: file:/home/noemi/martadero/telartes/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0-alpha2/res/values-pa-rIN/values-pa-rIN.xml -->
     <eat-comment/>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

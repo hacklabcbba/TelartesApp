@@ -40,7 +40,7 @@ public abstract class NoticasCategoriaService  extends  ClasesRest{
 
     @Override
     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-        Log.d("ERROR", bytes.toString());
+
     }
 
     public void obtenerCategoria() {
@@ -55,9 +55,9 @@ public abstract class NoticasCategoriaService  extends  ClasesRest{
             listaCategorias = new ArrayList<>();
             JSONArray jsonArray =  new JSONArray(new String(bytes));
             for (int c = 0; c <jsonArray.length() ; c++) {
-                listaCategorias.add(new Categoria(jsonArray.getJSONObject(c)));
+                listaCategorias.add(new Categoria(jsonArray.getJSONObject(c),"Noticia"));
             }
-            onSuccessObtenerCategoriaNoticia(listaCategorias,jsonArray);
+            onSuccessObtenerCategoriaNoticia(listaCategorias);
 
         } catch (Exception e) {
             Log.d("no consume categorias", e.getMessage());
@@ -69,6 +69,6 @@ public abstract class NoticasCategoriaService  extends  ClasesRest{
 
     }
 
-    public abstract void onSuccessObtenerCategoriaNoticia(List<Categoria> listaCategorias,JSONArray categoriaList) throws JSONException;
+    public abstract void onSuccessObtenerCategoriaNoticia(List<Categoria> listaCategorias ) throws JSONException;
 }
 

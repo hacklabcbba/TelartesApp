@@ -1,37 +1,42 @@
 package com.b_tree.telartes.principal;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.b_tree.telartes.Entidades.Noticia;
 import com.b_tree.telartes.R;
+import com.b_tree.telartes.adapter.NoticiaDetalleAdapter;
 import com.b_tree.telartes.base.BaseTelartesActivity;
-import com.bluejamesbond.text.DocumentView;
-import com.squareup.picasso.Picasso;
+import com.b_tree.telartes.base.Global;
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
+
+import org.lucasr.twowayview.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Created by noemi on 21-02-16.
  */
 public class NoticiaDetalleActivity extends BaseTelartesActivity {
-    private TextView lblTitulo;
-    private  TextView lbl_fecha;
-    private TextView lbl_fuente;
-    private TextView txtNoticia;
-    //private DocumentView txtNoticia;
-    private ImageView imgNoticias;
-    private Noticia noticia;
-    private TextView txtEnlaceAutor;
-    private TextView txtNombreAutor;
-    private TextView txtFuente;
+
     private ImageView imgShare;
+    private ImageView menuInfo;
+    private  DrawerLayout drawerLayout;
+    private LinearLayout linear_autor;
+    public List<Noticia> noticiasList;
     @Override
     protected String getScreenLabel() {
         return "NOTICIAS";
@@ -39,17 +44,18 @@ public class NoticiaDetalleActivity extends BaseTelartesActivity {
 
     @Override
     protected void inicializarVariables(Bundle savedInstanceState) {
-        lblTitulo = (TextView)findViewById(R.id.lbl_titulo_noticia);
-        lbl_fecha = (TextView)findViewById(R.id.lbl_fecha);
-       // txtNoticia = (DocumentView)findViewById(R.id.txt_n_noticia);
-        txtNoticia = (TextView)findViewById(R.id.txt_n_noticia);
-        imgNoticias = (ImageView)findViewById(R.id.img_noticia);
-        txtEnlaceAutor = (TextView)findViewById(R.id.txt_enlace_autor);
-        txtNombreAutor = (TextView)findViewById(R.id.txt_nombre_autor);
-        txtFuente = (TextView)findViewById(R.id.txt_fuente_noticia);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         imgShare = (ImageView)findViewById(R.id.img_share);
+        menuInfo = (ImageView)findViewById(R.id.menu_info);
+
         Intent i = getIntent();
-        this.noticia = (Noticia)i.getSerializableExtra("noticia");
+        int indice = (Integer)i.getIntExtra("noticia",0);
+
+        noticiasList = Global.getMiglobal().getDaosession().getNoticiaDao().loadAll();
+        NoticiaDetalleAdapter noticiaadapter = new NoticiaDetalleAdapter(getBaseContext(), noticiasList, indice);
+        TwoWayView lvTest = (TwoWayView) findViewById(R.id.lvItems);
+        lvTest.setAdapter(noticiaadapter);
         imgShare.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -71,6 +77,16 @@ public class NoticiaDetalleActivity extends BaseTelartesActivity {
                 return true;
             }
         });
+        menuInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+                    drawerLayout.closeDrawer(Gravity.RIGHT);
+                } else {
+                    drawerLayout.openDrawer(Gravity.RIGHT);
+                }
+            }
+        });
 
     }
 
@@ -82,21 +98,33 @@ public class NoticiaDetalleActivity extends BaseTelartesActivity {
     @Override
     protected void instaciarAsignarIGU(Bundle savedInstanceState) {
 
-        if(noticia!=null){
-            lblTitulo.setText(noticia.getTitulo());
-            lbl_fecha.setText("subido por: "+noticia.getEnviado_por()+ " el "+noticia.getFecha());
-            txtNoticia.setText(Html.fromHtml(noticia.getDescripcion()));
-            Picasso.with(getBaseContext()).load(noticia.getImagen()).into(imgNoticias);
-            txtEnlaceAutor.setText(noticia.getAutorEnlace());
-            txtNombreAutor.setText(noticia.getAutorNombre());
-            txtFuente.setText(Html.fromHtml(noticia.getFuente()));
-            txtFuente.setClickable(true);
-            txtFuente.setMovementMethod(LinkMovementMethod.getInstance());
-        }
 
     }
 
+    public void setupFacebookShareIntent() {
 
+        ShareDialog shareDialog;
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
+        shareDialog = new ShareDialog(this);
+
+
+
+        ShareLinkContent linkContent = new ShareLinkContent.Builder()
+
+                .setContentTitle("Title")
+
+                .setContentDescription(
+
+                        "\"Body Of Test Post\"")
+
+                .setContentUrl(Uri.parse("http://someurl.com/here"))
+
+                .build();
+        shareDialog.show(linkContent);
+
+    }
 
 
 }

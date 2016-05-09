@@ -7,6 +7,7 @@ import org.apache.http.Header;
 import org.json.JSONArray;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -14,10 +15,10 @@ import com.b_tree.telartes.Entidades.Noticia;
 
 public abstract class NoticiasService extends ClasesRest {
 	private List<Noticia> listaNoticias;
-
+	Context context;
 	public NoticiasService(Context context) {
 		super(context);
-
+		this.context = context;
 	}
 
 	@Override
@@ -36,7 +37,8 @@ public abstract class NoticiasService extends ClasesRest {
 
 	@Override
 	public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                Log.d("ERROR" ,  bytes.toString());
+                Log.d("ERROR" , throwable.getMessage());
+
 	}
 
 	public void ObtenerNoticias() {
@@ -48,6 +50,7 @@ public abstract class NoticiasService extends ClasesRest {
 	@Override
 	public void onSuccess(int i, Header[] headers, byte[] bytes) {
 		try {
+
 			listaNoticias = new ArrayList<>();
 			JSONArray jsonArray =  new JSONArray(new String(bytes));
 			for (int c = 0; c <jsonArray.length() ; c++) {
@@ -60,7 +63,10 @@ public abstract class NoticiasService extends ClasesRest {
 		}
 	}
 
-
+	@Override
+	public void onFinish() {
+		super.onFinish();
+	}
 
 	@Override
 	protected void onErrorLogico(String error) {
